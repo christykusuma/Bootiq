@@ -1,18 +1,32 @@
 {
-  "name": "server",
+  "name": "wanderlust",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "8.1.1",
-    "npm": "5.0.3"
+    "node": "9.2.0",
+    "npm": "5.5.1"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2"
+    "body-parser": "^1.18.2",
+    "concurrently": "^3.5.0",
+    "cookie-session": "^2.0.0-beta.3",
+    "express": "^4.16.2",
+    "facebook-events-by-location-core": "^0.7.0",
+    "mongoose": "^4.13.5",
+    "nodemon": "^1.12.1",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth20": "^1.0.0",
+    "yelp-fusion": "^1.0.4"
   }
 }
