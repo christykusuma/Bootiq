@@ -1,8 +1,4 @@
-# Wanderlust
-
-This app is a location-based tracker for travelers having a hard time remembering places they have been to and places they want to go. It's nice to see it visually on a map, so that you can plan your visits accordingly by area. You can also save as many cities as you want and Yelp search the places you've saved.
-
-Feel free to play around with the <a href="https://wanderlust-map.herokuapp.com/">demo</a>.
+# BOOTIQ
 
 ## Getting Started
 
@@ -43,6 +39,7 @@ module.exports = {
 ## Authors
 
 * **Christy Kusuma** - [ChristyKusuma](https://github.com/christykusuma)
+* **Michael Teixeira** - [MichaelTeixeira](https://github.com/MikeTeixeira)
 
 ## License
 
