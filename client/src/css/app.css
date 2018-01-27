@@ -182,7 +182,8 @@
   text-align: center;
   padding: 20px;
   margin-top: 50px;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  width: 1500; }
   .landing__brands--name {
     margin: 0.2% 1.5%;
     width: 20%;
