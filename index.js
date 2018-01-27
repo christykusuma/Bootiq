@@ -5,15 +5,6 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
 
-// Order matters: put user model in before trying to take it out
-require('./models/User');
-
-// Require the city model
-require('./models/City');
-
-// Require marker model
-require('./models/Marker');
-
 require('./services/passport');
 
 const bodyParser = require('body-parser');
@@ -42,18 +33,6 @@ app.use(passport.session());
 const authRoutes = require('./routes/authRoutes');
 // Could have done:  require('../routes/authRoutes')(app);
 authRoutes(app);
-
-// Require city routes
-require('./routes/cityRoutes')(app);
-
-// Require marker routes
-require('./routes/markerRoutes')(app);
-
-// Require yelp routes
-require('./routes/yelpRoutes')(app);
-
-// Require facebook routes
-require('./routes/facebookRoutes')(app);
 
 // For Heroku production
 if (process.env.NODE_ENV === 'production') {
