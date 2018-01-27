@@ -1,9 +1,25 @@
 // Home page
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 
 import '../css/app.css';
 
 class Header extends Component {
+	renderContent() {
+		if (this.props.auth) {
+			return (
+				<div>
+					<a href ="/api/logout">Logout</a>
+				</div>
+			);
+		} else {
+			return (
+				<div>
+					<a href ="/auth/google">Register/Login</a>
+				</div>
+			);
+		}
+	}
     
         render () {
             return ( 
@@ -20,7 +36,7 @@ class Header extends Component {
                         </div>
                         <div class="header__top--nav">
                             <li>
-                                <ul>Register/Login</ul>
+                                <ul>{this.renderContent()}</ul>
                                 <ul>+Wishlist</ul>
                                 <ul>My Bag (0 Items)</ul>
                             </li>
@@ -80,4 +96,8 @@ class Header extends Component {
         }
     };
     
-    export default Header;
+function mapStateToProps(state) {
+	return { auth: state.auth };
+}
+    
+export default connect(mapStateToProps)(Header);
