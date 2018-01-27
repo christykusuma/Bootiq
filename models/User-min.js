@@ -1,1 +1,0 @@
-const mongoose=require("mongoose"),Schema=mongoose.Schema,userSchema=new Schema({googleID:String,fname:String,lname:String});mongoose.model("users",userSchema);
