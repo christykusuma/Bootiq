@@ -17,6 +17,13 @@ class App extends Component {
 				<div>
                     <Header/>
 					<Route exact path="/" component={Landing} />
+                    <Route exact path="/brand/x-pert" component={Landing} />
+                    <Route exact path="/brand/la-tulipe" component={Landing} />
+                    <Route exact path="/brand/lt-pro" component={Landing} />
+                    <Route exact path="/brand/lt-men" component={Landing} />
+                    <Route exact path="/brand/sdm" component={Landing} />
+                    <Route exact path="/brand/make-up-store" component={Landing} />
+                    <Route exact path="/category/" component={Landing} />
 				</div>
 			</BrowserRouter>
 		);
