@@ -27,10 +27,12 @@
   .header__top--nav li {
     list-style: none;
     text-align: right; }
-    .header__top--nav li ul {
+    .header__top--nav li ul, .header__top--nav li a:visited, .header__top--nav li a:link {
+      text-decoration: none;
       display: inline-block;
-      padding: 15px 20px; }
-    .header__top--nav li ul:hover {
+      padding: 15px 20px;
+      color: black; }
+    .header__top--nav li ul:hover, .header__top--nav li a:hover {
       color: #42a8e7; }
 
 .header__logo img {
@@ -183,7 +185,7 @@
   padding: 20px;
   margin-top: 50px;
   margin-bottom: 30px;
-  width: 1500; }
+  width: 1500px; }
   .landing__brands--name {
     margin: 0.2% 1.5%;
     width: 20%;

@@ -27,7 +27,7 @@ import reducers from './reducers';
 
 // Store contains all the reducers
 // const store = createStore(reducers, {}, composeEnhancers(applyMiddleware(reduxThunk, logger)));
-const store = createStore(reducers, {}, applyMiddleware());
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
 	<Provider store={store}><App /></Provider>,

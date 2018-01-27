@@ -36,11 +36,13 @@ $primary-font:  'Lato', sans-serif;
         li {
             list-style: none;
             text-align: right;
-            ul {
+            ul, a:visited, a:link {
+                text-decoration: none;
                 display: inline-block;
                 padding: 15px 20px;
+                color: black;
             }
-            ul:hover {
+            ul:hover, a:hover {
                 color: $primary-color;
             }
         }
