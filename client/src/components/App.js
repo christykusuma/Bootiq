@@ -7,6 +7,7 @@ import '../css/app.css';
 
 import Header from './Header';
 import Landing from './Landing';
+import ShopAll from './ShopAll';
 
 // Holds all the other components
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
 				<div>
                     <Header/>
 					<Route exact path="/" component={Landing} />
+					<Route exact path="/shop-all" component={ShopAll} />
                     <Route exact path="/brand/x-pert" component={Landing} />
                     <Route exact path="/brand/la-tulipe" component={Landing} />
                     <Route exact path="/brand/lt-pro" component={Landing} />
