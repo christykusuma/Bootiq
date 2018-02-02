@@ -2,8 +2,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
-import '../css/app.css';
-
 class Header extends Component {
 	renderContent() {
 		if (this.props.auth) {
@@ -42,7 +40,7 @@ class Header extends Component {
                             </li>
                         </div>
                         <div class="header__logo">
-                            <img src="logo.png"/>
+                            <a href="/"><img src="logo.png"/></a>
                         </div>
                         <div class="header__bottom--nav">
                             <li>
