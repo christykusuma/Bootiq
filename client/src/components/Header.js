@@ -13,7 +13,7 @@ class Header extends Component {
 		} else {
 			return (
 				<div>
-					<a href ="/auth/google">Register/Login</a>
+					<a href ="/login">Register/Login</a>
 				</div>
 			);
 		}
@@ -50,24 +50,13 @@ class Header extends Component {
                                     <div class="dropdown-content--catbox">
                                     </div>
                                     <div class="dropdown-content--categories">
-                                        <div class="category">
-                                            Skincare<br/>
-                                            Cleaners
-                                            Refresher
-                                            Protection 
-                                            Energizer
-                                            Correction
-                                            Anti Aging
-
-                                            Makeup
-                                            Foundation 
-                                            Powder
-                                            Eye Shadow
-                                            Lipstick
-
-                                            Hair
-                                            Hair Treatment
-                                        </div>
+                                        <ul class="category">
+                                            <li>Makeup</li>
+                                            <li>Skin Care</li>
+                                            <li>Hair Care</li>
+                                            <li>Accessories</li>
+                                            <li>Men</li>
+                                        </ul>
                                     </div>
                                 </ul>
                                 <ul class="dropdown">
@@ -76,12 +65,19 @@ class Header extends Component {
                                     <div class="dropdown-content--brandbox">
                                     </div>
                                     <div class="dropdown-content--brands">
-                                        <p>Menu items...</p>
+                                        <ul class="category">
+                                            <li>X-Pert</li>
+                                            <li>La Tulipe</li>
+                                            <li>LT Pro</li>
+                                            <li>LT Men</li>
+                                            <li>SDM</li>
+                                            <li>Make Up Store</li>
+                                        </ul>
                                     </div>
                                 </ul>
-                                <ul class="dropdown">Favorites</ul>
-                                <ul class="dropdown">Sale</ul>
-                                <ul class="dropdown">Shop All</ul>
+                                <ul class="dropdown"><a href="/favorites">Favorites</a></ul>
+                                <ul class="dropdown"><a href="/sale">Sale</a></ul>
+                                <ul class="dropdown"><a href="/shop-all">Shop All</a></ul>
                             </li>
                             <div class="search-bar">
                                 <input type="text" placeholder="Search.."/>

@@ -8,6 +8,9 @@ import '../css/app.css';
 import Header from './Header';
 import Landing from './Landing';
 import ShopAll from './ShopAll';
+import Favorites from './Favorites';
+import Login from './Login';
+import Sale from './Sale';
 
 // Holds all the other components
 class App extends Component {
@@ -22,6 +25,9 @@ class App extends Component {
                     <Header/>
 					<Route exact path="/" component={Landing} />
 					<Route exact path="/shop-all" component={ShopAll} />
+					<Route exact path="/login" component={Login} />
+					<Route exact path="/sale" component={Sale} />
+					<Route exact path="/favorites" component={Favorites} />
                     <Route exact path="/brand/x-pert" component={Landing} />
                     <Route exact path="/brand/la-tulipe" component={Landing} />
                     <Route exact path="/brand/lt-pro" component={Landing} />

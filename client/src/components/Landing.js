@@ -1,8 +1,6 @@
 // Home page
 import React, { Component } from 'react'
 
-import '../css/app.css';
-
 class Landing extends Component {
     
         render () {
@@ -66,7 +64,6 @@ class Landing extends Component {
                             </div>
                         </div>
                         <div class="landing__brands">
-
                             <div class="landing__brands--name">
                                 <h3 class="landing__brands--title">Make Up Store</h3>
                                 <img src="make-up-store.jpg"/>
