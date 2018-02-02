@@ -10,6 +10,7 @@ import Landing from './Landing';
 import ShopAll from './ShopAll';
 import Favorites from './Favorites';
 import Login from './Login';
+import SignUp from './SignUp';
 import Sale from './Sale';
 
 // Holds all the other components
@@ -26,6 +27,7 @@ class App extends Component {
 					<Route exact path="/" component={Landing} />
 					<Route exact path="/shop-all" component={ShopAll} />
 					<Route exact path="/login" component={Login} />
+					<Route exact path="/signup" component={SignUp} />
 					<Route exact path="/sale" component={Sale} />
 					<Route exact path="/favorites" component={Favorites} />
                     <Route exact path="/brand/x-pert" component={Landing} />
