@@ -1,7 +1,5 @@
 const Product = require('../models/Products');
 
-
-
 module.exports = (app) => {
 
 //----- RETRIEVE ALL PRODUCTS FROM DATABASE --------//
