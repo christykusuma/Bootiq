@@ -12,22 +12,29 @@
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "regdev": "nodemon index.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "concurrently": "^3.5.0",
     "cookie-session": "^2.0.0-beta.3",
+    "cors": "^2.8.4",
     "express": "^4.16.2",
     "facebook-events-by-location-core": "^0.7.0",
-    "mongoose": "^4.13.5",
-    "nodemon": "^1.12.1",
+    "jwt-simple": "^0.5.1",
+    "mongoose": "^4.13.11",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.14.12",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google": "^0.3.0",
     "passport-google-oauth20": "^1.0.0",
+    "passport-jwt": "^3.0.1",
+    "passport-local": "^1.0.0",
     "yelp-fusion": "^1.0.4"
   }
 }

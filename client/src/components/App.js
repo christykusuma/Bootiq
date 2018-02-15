@@ -1,3 +1,19 @@
+// import React, { Component } from 'react';
+// import Header from './Header';
+
+// export default class App extends Component {
+//   render() {
+//     return (
+//       <div>
+//         <Header />
+//         {this.props.children}
+//       </div>
+//     );
+//   }
+// }
+
+// GOOGLE OAUTH ------------
+
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';

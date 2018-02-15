@@ -14,6 +14,7 @@ class Header extends Component {
 			return (
 				<div>
 					<a href ="/login">Register/Login</a>
+                    <a href ="/auth/google">Google Login</a>
 				</div>
 			);
 		}
