@@ -1,4 +1,4 @@
-// Shop all page
+// Sale page
 import React, { Component } from 'react'
 
 class Sale extends Component {
