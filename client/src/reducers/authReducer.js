@@ -1,4 +1,4 @@
-import { FETCH_USER } from '../actions/types';
+import { FETCH_USER, CHANGE_AUTH } from '../actions/types';
 
 // State will always be either null, user model or false
 export default function(state = null, action) {
