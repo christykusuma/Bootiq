@@ -49,13 +49,19 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+// const userSchema = new Schema({
+//   googleId: String,
+//   email: String,
+//   name: String,
+//   password: String,
+//   isAdmin: Boolean,
+//   cart: [{type: Schema.Types.ObjectId, ref: 'Product'}]
+// });
+
 const userSchema = new Schema({
-  googleId: String,
-  email: String,
-  name: String,
-  password: String,
-  isAdmin: Boolean,
-  cart: [{type: Schema.Types.ObjectId, ref: 'Product'}]
+    googleID: String,
+    fname: String,
+    lname: String
 });
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('users', userSchema);

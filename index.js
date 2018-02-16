@@ -40,6 +40,7 @@ require('./models/Brand');
 require('./models/Products');
 require('./models/User');
 
+// Has to come after models
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI);
@@ -47,7 +48,7 @@ mongoose.connect(keys.mongoURI);
 const app = express();
 
 // parse application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
@@ -68,7 +69,6 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/productRoutes')(app);
 require('./routes/brandRoutes')(app);
-
 
 // For Heroku production
 if (process.env.NODE_ENV === 'production') {

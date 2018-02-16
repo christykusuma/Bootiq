@@ -4,7 +4,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('../config/keys');
 const mongoose = require('mongoose');
-const User = mongoose.model('user');
+const User = mongoose.model('users');
 
 // Setup cookie to track our User
 passport.serializeUser((user, done) => {
@@ -12,10 +12,8 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-
   //Find user by googleId
-  User.findById(id)
-    .then(user => {
+  User.findById(id).then(user => {
         //callback to deserializeUser
         done(null, user);
   });
@@ -24,33 +22,55 @@ passport.deserializeUser((id, done) => {
 //Create new instance of Google Strategy to
 //add user to database
 
-passport.use(new GoogleStrategy({
-  clientID: keys.googleClientID,
-  clientSecret: keys.googleClientSecret,
-  callbackURL: '/auth/google/callback',
-  proxy: true 
-},
-
-  //Promise
-  async (accessToken, refreshToken, profile, done) => {
+passport.use(
+    new GoogleStrategy({
+        clientID: keys.googleClientID,
+        clientSecret: keys.googleClientSecret,
+        callbackURL: '/auth/google/callback',
+        proxy: true 
+    },
+    (accessToken, refreshToken, profile, done) => {
+        // console.log('access token', accessToken);
+        // console.log('refresh token', refreshToken);
+        // console.log('profile', profile);
+        User.findOne({ googleID: profile.id })
+            .then(( existingUser ) => {
+                if (existingUser) {
+                    // We already have a record with the given profile ID
+                    done(null, existingUser);
+                } else {
+                    // we don't have a user record with thi sID, make a new record
+                    new User({
+                        googleID: profile.id,
+                        fname: profile.name.givenName, 
+                        lname: profile.name.familyName
+                    }).save()
+                    .then(user => done(null, user));
+                }
+            });
+    })
+//     // Promise
+//     async (accessToken, refreshToken, profile, done) => {
     
-    //Find an existing user
-    const exisitingUser = await user.findOne({googleId: profile.id});
+//     //Find an existing user
+//     const existingUser = await user.findOne({googleID: profile.id});
 
-    //If found, skip user creation and return user
-    if (exisitingUser) {
-      return done(null, exisitingUser);
-    }
-
-    //Make new google user if no user is found
-
-    const user = await new User({
-      googleId: profile.id,
-      email: profile.emails[0].value,
-      name: profile.displayName
-    }).save();
-    done(null, user);
-  })
+//         // If found, skip user creation and return user
+//         if (existingUser) {
+//             console.log('existing user');
+//             // We already have a record with the given profile ID
+// 			// done(null, existingUser);
+//         } else {
+//             console.log('new user');
+//             // Make a new record
+//             // const user = await new User({ 
+//             //     googleID: profile.id, 
+//             //     fname: profile.name.givenName, 
+//             //     lname: profile.name.familyName
+//             // }).save();
+//             // done(null, user);	
+//         }
+//   })
 );
 
 // const passport = require('passport');
