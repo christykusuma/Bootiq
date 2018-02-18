@@ -33,6 +33,7 @@ passport.use(
         // console.log('access token', accessToken);
         // console.log('refresh token', refreshToken);
         // console.log('profile', profile);
+        console.log('profile', profile.emails);
         User.findOne({ googleID: profile.id })
             .then(( existingUser ) => {
                 if (existingUser) {
@@ -43,7 +44,10 @@ passport.use(
                     new User({
                         googleID: profile.id,
                         fname: profile.name.givenName, 
-                        lname: profile.name.familyName
+                        lname: profile.name.familyName,
+                        email: profile.emails[0].value,
+                        password: profile.id,
+                        isAdmin: false
                     }).save()
                     .then(user => done(null, user));
                 }

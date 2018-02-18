@@ -12,8 +12,10 @@ module.exports = (app) => {
         console.log("error finding your brands");
       }
 
-      res.json({message: "Successfully found your brands database",
-                brands: brands});
+      res.json({
+        message: "Successfully found your brands database",
+        brands: brands
+      });
     });
   });
 
@@ -22,13 +24,13 @@ module.exports = (app) => {
 
 app.post('/api/admin/brands/add', (req,res) => {
 
-  //Create a an instance of our Brand model to add new Brands to DB
+  // Create a an instance of our Brand model to add new Brands to DB
 
   const brand = new Brand();
 
   brand.name = req.body.name;
-  brand.image = req.body.image;
-  brand.description = req.body.description;
+  // brand.image = req.body.image;
+  // brand.description = req.body.description;
 
   brand.save((error, brandSaved) => {
     if(error){
@@ -36,8 +38,10 @@ app.post('/api/admin/brands/add', (req,res) => {
       console.log("error saving your brand to the database");
     }
 
-    res.json({message: "Successfully saved brand to database",
-              brandSaved: brandSaved});
+    res.json({
+      message: "Successfully saved brand to database",
+      brandSaved: brandSaved
+    });
   })
 })
 

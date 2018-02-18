@@ -61,7 +61,10 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
     googleID: String,
     fname: String,
-    lname: String
+    lname: String,
+    email: String,
+    password: String,
+    isAdmin: Boolean
 });
 
 module.exports = mongoose.model('users', userSchema);

@@ -32,27 +32,37 @@ import Sale from './Sale';
 // Holds all the other components
 class App extends Component {
 	componentDidMount() {
-		this.props.fetchUser();
+    this.props.fetchUser();
 	}
 
 	render () {
 		return ( 
 			<BrowserRouter>
 				<div>
-                    <Header/>
+          <Header/>
 					<Route exact path="/" component={Landing} />
 					<Route exact path="/shop-all" component={ShopAll} />
 					<Route exact path="/login" component={Login} />
 					<Route exact path="/signup" component={SignUp} />
 					<Route exact path="/sale" component={Sale} />
 					<Route exact path="/favorites" component={Favorites} />
-                    <Route exact path="/brand/x-pert" component={Landing} />
-                    <Route exact path="/brand/la-tulipe" component={Landing} />
-                    <Route exact path="/brand/lt-pro" component={Landing} />
-                    <Route exact path="/brand/lt-men" component={Landing} />
-                    <Route exact path="/brand/sdm" component={Landing} />
-                    <Route exact path="/brand/make-up-store" component={Landing} />
-                    <Route exact path="/category/" component={Landing} />
+
+          <Route exact path="/brand/create" component={Landing} />
+          <Route exact path="/brand/x-pert" component={Landing} />
+          <Route exact path="/brand/la-tulipe" component={Landing} />
+          <Route exact path="/brand/lt-pro" component={Landing} />
+          <Route exact path="/brand/lt-men" component={Landing} />
+          <Route exact path="/brand/sdm" component={Landing} />
+          <Route exact path="/brand/make-up-store" component={Landing} />
+
+          <Route exact path="/category/create" component={Landing} />
+          <Route exact path="/category/makeup" component={Landing} />
+          <Route exact path="/category/skincare" component={Landing} />
+          <Route exact path="/category/haircare" component={Landing} />
+          <Route exact path="/category/accessories" component={Landing} />
+          <Route exact path="/category/men" component={Landing} />
+          
+          <Route exact path="/products/create" component={Landing} />
 				</div>
 			</BrowserRouter>
 		);

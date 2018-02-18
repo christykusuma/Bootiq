@@ -1,4 +1,4 @@
-//Routes that require a user to be signed in
+// Routes that require a user to be signed in
 
 const passport = require('passport');
 

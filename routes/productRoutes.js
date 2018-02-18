@@ -1,4 +1,4 @@
-const Product = require('../models/Products');
+const Product = require('../models/Product');
 
 module.exports = (app) => {
 
@@ -44,26 +44,5 @@ module.exports = (app) => {
                 productSaved: productSaved});
     })
   });
-
-
-
-
-
-
-
-
-
-
-  //----- RETRIEVE ALL PRODUCTS FROM DATABASE --------//
-
-
-
-
-
-
-
-
-
-  //----- RETRIEVE ALL PRODUCTS FROM DATABASE --------//
 
 }

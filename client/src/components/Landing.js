@@ -7,17 +7,16 @@ class Landing extends Component {
             return ( 
                 <div>
                     <div class="landing">
-                        <div class="landing__ads">
-                            <img src="Banner-Malvava.jpg"/>
-                        </div>      
-                        <div class="landing__just-arrived">
+                        <img class="container-fluid" src="Banner-Malvava.jpg"/>    
+                        <div class="landing__just-arrived container-fluid">
                             <h3>Just Arrived</h3>
                             <div class="landing__just-arrived--products">
                                 <div class="product">
                                     <img src="product-1.jpg"/>
                                     <div class="product-description">
                                         <span class="product-brand">Make Up Store</span><br/>
-                                        Marble Microshadow - Rosso Asiago<br/>
+                                        Marble Microshadow<br/>
+                                        Rosso Asiago<br/>
                                         Rp 290,000
                                     </div>
                                 </div>
@@ -33,7 +32,8 @@ class Landing extends Component {
                                     <img src="product-3.jpg"/>
                                     <div class="product-description">
                                         <span class="product-brand">LT Pro</span><br/>
-                                        Eye Glitter Gel - Fresh Green<br/>
+                                        Eye Glitter Gel<br/>
+                                        Fresh Green<br/>
                                         Rp 78,500
                                     </div>
                                 </div>
@@ -41,7 +41,8 @@ class Landing extends Component {
                                     <img src="product-4.jpg"/>
                                     <div class="product-description">
                                         <span class="product-brand">LT Pro</span><br/>
-                                        Eye Color Collection No.01<br/>
+                                        Eye Color<br/>
+                                        Collection No.01<br/>
                                         Rp 120,000
                                     </div>
                                 </div>
@@ -57,13 +58,14 @@ class Landing extends Component {
                                     <img src="product-6.jpg"/>
                                     <div class="product-description">
                                         <span class="product-brand">La Tulipe</span><br/>
-                                        Eye Brow Pencil - Brown<br/>
+                                        Eye Brow Pencil<br/>
+                                        Brown<br/>
                                         Rp 52,500
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="landing__brands">
+                        {/* <div class="landing__brands">
                             <div class="landing__brands--name">
                                 <h3 class="landing__brands--title">Make Up Store</h3>
                                 <img src="make-up-store.jpg"/>
@@ -80,16 +82,17 @@ class Landing extends Component {
                                 <h3 class="landing__brands--title">LT Pro</h3>
                                 <img src="LT-pro.jpg"/>
                             </div>
-                        </div>
+                        </div> */}
 
-                        <div class="landing__just-arrived">
+                        <div class="landing__bestsellers container-fluid">
                             <h3>Best Sellers</h3>
-                            <div class="landing__just-arrived--products">
+                            <div class="landing__bestsellers--products">
                                 <div class="product">
                                     <img src="product-1.jpg"/>
                                     <div class="product-description">
                                         <span class="product-brand">Make Up Store</span><br/>
-                                        Marble Microshadow - Rosso Asiago<br/>
+                                        Marble Microshadow<br/>
+                                        Rosso Asiago<br/>
                                         Rp 290,000
                                     </div>
                                 </div>
@@ -105,7 +108,8 @@ class Landing extends Component {
                                     <img src="product-3.jpg"/>
                                     <div class="product-description">
                                         <span class="product-brand">LT Pro</span><br/>
-                                        Eye Glitter Gel - Fresh Green<br/>
+                                        Eye Glitter Gel<br/>
+                                        Fresh Green<br/>
                                         Rp 78,500
                                     </div>
                                 </div>
@@ -113,7 +117,8 @@ class Landing extends Component {
                                     <img src="product-4.jpg"/>
                                     <div class="product-description">
                                         <span class="product-brand">LT Pro</span><br/>
-                                        Eye Color Collection No.01<br/>
+                                        Eye Color<br/>
+                                        Collection No.01<br/>
                                         Rp 120,000
                                     </div>
                                 </div>
@@ -129,14 +134,15 @@ class Landing extends Component {
                                     <img src="product-6.jpg"/>
                                     <div class="product-description">
                                         <span class="product-brand">La Tulipe</span><br/>
-                                        Eye Brow Pencil - Brown<br/>
+                                        Eye Brow Pencil<br/>
+                                        Brown<br/>
                                         Rp 52,500
                                     </div>
-                                </div>
+                                </div>                          
                             </div>
-                            <div class="landing__article">
-                                <img src="blog.jpg"/>
-                            </div>
+                        </div>
+                        <div class="landing__article container-fluid">
+                            <img src="blog.jpg"/>
                         </div>
                     </div>
                 </div>
