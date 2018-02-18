@@ -39,7 +39,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 30vw;
+  width: 400px;
   padding: 0px 20px;
   margin-top: -15px; }
 
@@ -71,10 +71,10 @@
     position: absolute;
     top: 60px;
     left: -23px;
-    height: 400px;
+    height: 380px;
     border: solid 4px #42a8e7;
     background-color: black;
-    min-width: 930px;
+    width: 268px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 12px 16px;
     z-index: 1;
@@ -95,10 +95,10 @@
     position: absolute;
     top: 60px;
     left: -23px;
-    height: 400px;
+    height: 380px;
     border: solid 4px #42a8e7;
     background-color: black;
-    min-width: 930px;
+    width: 220px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 12px 16px;
     z-index: 1;
@@ -178,23 +178,39 @@
     margin-right: auto; }
 
 .landing__just-arrived {
+  margin-top: 50px;
   margin-bottom: 30px; }
   .landing__just-arrived h3 {
     text-align: center;
-    font-family: "Vollkorn", serif;
+    font-family: "Lato", sans-serif;
     font-size: 2.3rem;
     letter-spacing: 2px; }
   .landing__just-arrived--products {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
     text-align: center;
-    height: 250px;
-    margin: 10px 20px; }
+    height: 100%;
+    width: 98vw;
+    margin: 10px 20px;
+    margin-left: 0;
+    background-color: #eff3f5; }
     .landing__just-arrived--products img {
-      width: 200px;
+      width: 180px;
       height: 180px; }
     .landing__just-arrived--products .product {
       display: inline-block;
       padding: 10px;
+      height: 100%;
       width: 200px; }
+      .landing__just-arrived--products .product-description {
+        display: inline-block;
+        background-color: #c9d6de;
+        width: 100%;
+        height: 125px;
+        font-size: 0.9rem;
+        padding: 5px; }
       .landing__just-arrived--products .product-brand {
         font-weight: bold;
         font-size: 1.1rem;
@@ -400,3 +416,7 @@
       width: 70px;
       height: 30px;
       text-transform: uppercase; }
+
+@media (max-width: 1186px) {
+  .search-bar {
+    display: none; } }

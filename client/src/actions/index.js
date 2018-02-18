@@ -71,7 +71,11 @@
 // }
 
 import axios from 'axios';
-import { FETCH_USER } from './types';
+import { 
+    FETCH_USER,
+    FETCH_BRANDS,
+    FETCH_CATEGORIES
+} from './types';
 
 // export const fetchUser = () => {
 //     return function(dispatch) {
@@ -82,7 +86,41 @@ import { FETCH_USER } from './types';
 // };
 
 // Fetches user data
-export const fetchUser = () => async (dispatch) => {
-	const res = await axios.get('/api/current_user')
+export const fetchUser = () => async dispatch => {
+    const res = await axios.get('/api/current_user');
+
+    console.log('user info', res.data);
+
 	dispatch({ type: FETCH_USER, payload: res.data });
 };
+
+// Fetches brands
+export const fetchCategories = () => async dispatch => {
+    const res = await axios.get('/api/categories/all');
+
+    console.log('all the categories', res.data.categories);
+
+    dispatch({ type: FETCH_CATEGORIES, payload: res.data.categories});
+};
+
+// Fetches brands
+export const fetchBrands = () => async dispatch => {
+    const res = await axios.get('/api/brands/all');
+
+    console.log('all the brands', res.data.brands);
+
+    dispatch({ type: FETCH_BRANDS, payload: res.data.brands});
+};
+
+// // Submits a brand
+// export const submitBrand = brand => async (dispatch, getState) => {
+//     const user = getState().auth.id
+//     const res = await axios.post('/api/admin/brands/add', {
+//         ...brand,
+//         _user: user
+//     });
+
+//     console.log('submitted brand', res);
+
+//     dispatch({ type: FETCH_BRANDS, payload: res.data});
+// };

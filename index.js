@@ -37,7 +37,8 @@ const bodyParser = require('body-parser');
 
 //Require in Models
 require('./models/Brand');
-require('./models/Products');
+require('./models/Category');
+require('./models/Product');
 require('./models/User');
 
 // Has to come after models
@@ -67,6 +68,7 @@ app.use(passport.session());
 // const authRoutes = require('./routes/authRoutes');
 // Could have done:  require('../routes/authRoutes')(app);
 require('./routes/authRoutes')(app);
+require('./routes/categoryRoutes')(app);
 require('./routes/productRoutes')(app);
 require('./routes/brandRoutes')(app);
 

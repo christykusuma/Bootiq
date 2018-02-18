@@ -51,7 +51,7 @@ $primary-font:  'Lato', sans-serif;
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 30vw;
+        width: 400px;
         padding: 0px 20px;
         margin-top: -15px;
     }
@@ -89,10 +89,11 @@ $primary-font:  'Lato', sans-serif;
             position: absolute;
             top: 60px;
             left: -23px;
-            height: 400px;
+            height: 380px;
             border: solid 4px $primary-color;
             background-color: black;
-            min-width: 930px;
+            // min-width: 930px;
+            width: 268px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             padding: 12px 16px;
             z-index: 1;
@@ -118,10 +119,10 @@ $primary-font:  'Lato', sans-serif;
             position: absolute;
             top: 60px;
             left: -23px;
-            height: 400px;
+            height: 380px;
             border: solid 4px $primary-color;
             background-color: black;
-            min-width: 930px;
+            width: 220px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             padding: 12px 16px;
             z-index: 1;
@@ -260,25 +261,42 @@ $primary-font:  'Lato', sans-serif;
 
 
     &__just-arrived {
+        margin-top: 50px;
         margin-bottom: 30px;
         h3 {
             text-align: center;
-            font-family: $tertiary-font;
+            font-family: $primary-font;
             font-size: 2.3rem;
             letter-spacing: 2px;
         }
         &--products {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            justify-content: center;
             text-align: center;
-            height: 250px;
+            height: 100%;
+            width: 98vw;
             margin: 10px 20px;
+            margin-left: 0;
+            background-color: #eff3f5;
             img {
-                width: 200px;
+                width: 180px;
                 height: 180px;
             }
             .product {
                 display: inline-block;
                 padding: 10px;
+                height: 100%;
                 width: 200px;
+                &-description {
+                    display: inline-block;
+                    background-color: #c9d6de;
+                    width: 100%;
+                    height: 125px;
+                    font-size: 0.9rem;
+                    padding: 5px;
+                }
                 &-brand {
                     font-weight: bold;
                     font-size: 1.1rem;
@@ -548,5 +566,11 @@ $primary-font:  'Lato', sans-serif;
             height: 30px;
             text-transform: uppercase;
         }
+    }
+}
+
+@media (max-width: 1186px) {
+    .search-bar {
+        display: none;
     }
 }
