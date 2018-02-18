@@ -260,7 +260,7 @@ $primary-font:  'Lato', sans-serif;
 
 
 
-    &__just-arrived {
+    &__just-arrived, &__bestsellers {
         margin-top: 50px;
         margin-bottom: 30px;
         h3 {
@@ -268,6 +268,10 @@ $primary-font:  'Lato', sans-serif;
             font-family: $primary-font;
             font-size: 2.3rem;
             letter-spacing: 2px;
+            padding-bottom: 20px;
+            border-bottom: #3d8ab9 solid 5px;
+            width: 40%;
+            margin: auto auto;
         }
         &--products {
             display: flex;
@@ -275,11 +279,12 @@ $primary-font:  'Lato', sans-serif;
             flex-wrap: wrap;
             justify-content: center;
             text-align: center;
-            height: 100%;
+            height: 330px;
             width: 98vw;
             margin: 10px 20px;
             margin-left: 0;
             background-color: #eff3f5;
+            overflow: hidden;
             img {
                 width: 180px;
                 height: 180px;
@@ -336,9 +341,9 @@ $primary-font:  'Lato', sans-serif;
     }
     &__article {
         position: relative;
-        margin-top: 70px;
+        margin-top: 20px;
         img {
-            width: 93vw;
+            width: 97vw;
             max-width: 1192.13px;
             display: block;
             margin-left: auto;

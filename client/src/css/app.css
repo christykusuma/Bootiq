@@ -177,41 +177,46 @@
     margin-left: auto;
     margin-right: auto; }
 
-.landing__just-arrived {
+.landing__just-arrived, .landing__bestsellers {
   margin-top: 50px;
   margin-bottom: 30px; }
-  .landing__just-arrived h3 {
+  .landing__just-arrived h3, .landing__bestsellers h3 {
     text-align: center;
     font-family: "Lato", sans-serif;
     font-size: 2.3rem;
-    letter-spacing: 2px; }
-  .landing__just-arrived--products {
+    letter-spacing: 2px;
+    padding-bottom: 20px;
+    border-bottom: #3d8ab9 solid 5px;
+    width: 40%;
+    margin: auto auto; }
+  .landing__just-arrived--products, .landing__bestsellers--products {
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
-    height: 100%;
+    height: 330px;
     width: 98vw;
     margin: 10px 20px;
     margin-left: 0;
-    background-color: #eff3f5; }
-    .landing__just-arrived--products img {
+    background-color: #eff3f5;
+    overflow: hidden; }
+    .landing__just-arrived--products img, .landing__bestsellers--products img {
       width: 180px;
       height: 180px; }
-    .landing__just-arrived--products .product {
+    .landing__just-arrived--products .product, .landing__bestsellers--products .product {
       display: inline-block;
       padding: 10px;
       height: 100%;
       width: 200px; }
-      .landing__just-arrived--products .product-description {
+      .landing__just-arrived--products .product-description, .landing__bestsellers--products .product-description {
         display: inline-block;
         background-color: #c9d6de;
         width: 100%;
         height: 125px;
         font-size: 0.9rem;
         padding: 5px; }
-      .landing__just-arrived--products .product-brand {
+      .landing__just-arrived--products .product-brand, .landing__bestsellers--products .product-brand {
         font-weight: bold;
         font-size: 1.1rem;
         letter-spacing: 2px;
@@ -244,9 +249,9 @@
 
 .landing__article {
   position: relative;
-  margin-top: 70px; }
+  margin-top: 20px; }
   .landing__article img {
-    width: 93vw;
+    width: 97vw;
     max-width: 1192.13px;
     display: block;
     margin-left: auto;
