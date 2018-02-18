@@ -84,9 +84,9 @@ class Landing extends Component {
                             </div>
                         </div> */}
 
-                        <div class="landing__bestsellers">
+                        <div class="landing__bestsellers container-fluid">
                             <h3>Best Sellers</h3>
-                            <div class="landing__just-arrived--products">
+                            <div class="landing__bestsellers--products">
                                 <div class="product">
                                     <img src="product-1.jpg"/>
                                     <div class="product-description">
@@ -140,9 +140,9 @@ class Landing extends Component {
                                     </div>
                                 </div>                          
                             </div>
-                            <div class="landing__article container-fluid">
-                                <img src="blog.jpg"/>
-                            </div>
+                        </div>
+                        <div class="landing__article container-fluid">
+                            <img src="blog.jpg"/>
                         </div>
                     </div>
                 </div>

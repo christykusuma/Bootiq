@@ -23,6 +23,7 @@ $primary-font:  'Lato', sans-serif;
             text-align: right;
             ul {
                 display: inline-block;
+                margin: auto 1%;
             }
         }
     }
@@ -261,8 +262,10 @@ $primary-font:  'Lato', sans-serif;
 
 
     &__just-arrived, &__bestsellers {
-        margin-top: 50px;
-        margin-bottom: 30px;
+        margin-top: 20px;
+        padding-top: 30px;
+        margin-bottom: 20px;
+        background-color: #eff3f5;
         h3 {
             text-align: center;
             font-family: $primary-font;
@@ -341,7 +344,9 @@ $primary-font:  'Lato', sans-serif;
     }
     &__article {
         position: relative;
-        margin-top: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: #c3c3c3;
         img {
             width: 97vw;
             max-width: 1192.13px;
