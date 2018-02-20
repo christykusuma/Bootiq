@@ -23,6 +23,7 @@
   text-transform: uppercase;
   padding: 15px 20px;
   padding-bottom: 0;
+  padding-top: 0;
   letter-spacing: 2px;
   font-size: 1rem; }
   .header__top--nav li {
@@ -34,7 +35,7 @@
       padding: 15px 20px;
       color: black; }
     .header__top--nav li ul:hover, .header__top--nav li a:hover {
-      color: #42a8e7; }
+      color: #3d8ab9; }
 
 .header__logo img {
   display: block;
@@ -42,7 +43,8 @@
   margin-right: auto;
   width: 400px;
   padding: 0px 20px;
-  margin-top: -15px; }
+  margin-top: -15px;
+  margin-bottom: 20px; }
 
 .header__bottom--nav {
   text-align: center;
@@ -60,7 +62,7 @@
       padding: 10px 5px;
       margin: 0 15px; }
     .header__bottom--nav li ul:hover {
-      border-bottom: solid #42a8e7 3px; }
+      border-bottom: solid #3d8ab9 3px; }
   .header__bottom--nav .dropdown {
     position: relative;
     display: inline-block; }
@@ -73,15 +75,15 @@
     top: 60px;
     left: -23px;
     height: 380px;
-    border: solid 4px #42a8e7;
-    background-color: black;
+    border: solid 4px #c9d6de;
+    background-color: #eff3f5;
     width: 268px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 12px 16px;
     z-index: 1;
     text-align: left; }
     .header__bottom--nav .dropdown-content--categories .category {
-      color: white;
+      color: #3d8ab9;
       z-index: 2;
       text-align: left;
       display: flex;
@@ -97,15 +99,15 @@
     top: 60px;
     left: -23px;
     height: 380px;
-    border: solid 4px #42a8e7;
-    background-color: black;
+    border: solid 4px #c9d6de;
+    background-color: #eff3f5;
     width: 220px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 12px 16px;
     z-index: 1;
     text-align: left; }
     .header__bottom--nav .dropdown-content--brands .category {
-      color: white;
+      color: #3d8ab9;
       z-index: 2;
       text-align: left;
       display: flex;
@@ -118,8 +120,8 @@
   .header__bottom--nav .dropdown-content--catname--hover, .header__bottom--nav .dropdown-content--brandname--hover {
     display: inline-block;
     padding: 10px 0;
-    color: white;
-    border-bottom: solid #42a8e7 3px;
+    color: black;
+    border-bottom: solid #3d8ab9 3px;
     font-family: "Questrial", sans-serif;
     letter-spacing: 2px;
     font-size: 1rem;
@@ -128,7 +130,7 @@
     top: 0; }
   .header__bottom--nav .dropdown-content--catbox {
     display: none;
-    background-color: black;
+    background-color: #c9d6de;
     width: 268px;
     height: 74px;
     z-index: 1;
@@ -137,11 +139,11 @@
     border-top-right-radius: 10px;
     top: -10px;
     left: -23px;
-    border: solid 4px #42a8e7;
+    border: solid 4px #c9d6de;
     border-bottom: none; }
   .header__bottom--nav .dropdown-content--brandbox {
     display: none;
-    background-color: black;
+    background-color: #c9d6de;
     width: 220px;
     height: 74px;
     z-index: 1;
@@ -150,7 +152,7 @@
     border-top-right-radius: 10px;
     top: -10px;
     left: -23px;
-    border: solid 4px #42a8e7;
+    border: solid 4px #c9d6de;
     border-bottom: none; }
   .header__bottom--nav .dropdown:hover .dropdown-content--categories, .header__bottom--nav .dropdown:hover .dropdown-content--brands,
   .header__bottom--nav .dropdown-content--categories:hover .dropdown-content--categories, .header__bottom--nav .dropdown-content--brands:hover .dropdown-content--brands {
@@ -168,8 +170,7 @@
     z-index: 4; }
 
 .landing__ads {
-  padding: 5px 20px;
-  margin-bottom: 40px; }
+  padding: 5px 20px; }
   .landing__ads img {
     width: 97vw;
     height: 400px;
@@ -178,10 +179,12 @@
     margin-left: auto;
     margin-right: auto; }
 
+.landing__just-arrived {
+  margin-bottom: 20px; }
+
 .landing__just-arrived, .landing__bestsellers {
-  margin-top: 20px;
-  padding-top: 30px;
-  margin-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 20px;
   background-color: #eff3f5; }
   .landing__just-arrived h3, .landing__bestsellers h3 {
     text-align: center;
@@ -203,7 +206,11 @@
     margin: 10px 20px;
     margin-left: 0;
     background-color: #eff3f5;
-    overflow: hidden; }
+    overflow: hidden;
+    position: relative;
+    /* Next & previous buttons */
+    /* Position the "next button" to the right */
+    /* On hover, change color */ }
     .landing__just-arrived--products img, .landing__bestsellers--products img {
       width: 180px;
       height: 180px; }
@@ -218,12 +225,27 @@
         width: 100%;
         height: 125px;
         font-size: 0.9rem;
-        padding: 5px; }
+        padding: 5px;
+        border-top: solid 4px #3d8ab9; }
       .landing__just-arrived--products .product-brand, .landing__bestsellers--products .product-brand {
         font-weight: bold;
         font-size: 1.1rem;
         letter-spacing: 2px;
         font-family: "Vollkorn", serif; }
+    .landing__just-arrived--products .prev, .landing__just-arrived--products .next, .landing__bestsellers--products .prev, .landing__bestsellers--products .next {
+      cursor: pointer;
+      position: absolute;
+      top: 40%;
+      color: black;
+      font-weight: bold;
+      font-size: 30px;
+      transition: 0.6s ease; }
+    .landing__just-arrived--products .next, .landing__bestsellers--products .next {
+      right: 25px; }
+    .landing__just-arrived--products .prev, .landing__bestsellers--products .prev {
+      left: 25px; }
+    .landing__just-arrived--products .prev:hover, .landing__just-arrived--products .next:hover, .landing__bestsellers--products .prev:hover, .landing__bestsellers--products .next:hover {
+      color: #3d8ab9 !important; }
 
 .landing__brands {
   text-align: center;
@@ -250,32 +272,54 @@
     text-align: center;
     padding: 20px; }
 
-.landing__article {
+.landing__blog {
+  margin: 0;
   position: relative;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: #c3c3c3; }
-  .landing__article img {
-    width: 97vw;
-    max-width: 1192.13px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto; }
-  .landing__article--description {
-    position: absolute;
-    top: 200px;
-    left: 180px;
-    font-size: 2.5rem;
-    font-family: "Vollkorn", serif;
-    padding-bottom: 8px;
-    border-bottom: 3px solid #42a8e7; }
-  .landing__article--subdescription {
-    position: absolute;
-    color: #42a8e7;
-    top: 270px;
-    left: 180px;
-    font-size: 1.2rem;
-    font-family: "Questrial", sans-serif; }
+  background-color: #c9d6de;
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  width: 100vw;
+  font-family: "Lato", sans-serif;
+  border-top: solid 4px #a6b6bd;
+  border-bottom: solid 4px #a6b6bd; }
+  .landing__blog--pic {
+    display: inline-block;
+    width: 420px;
+    height: 100%; }
+    .landing__blog--pic img {
+      padding-top: 0;
+      width: 50%;
+      height: 100%;
+      display: inline-block; }
+  .landing__blog--read {
+    display: inline-block;
+    width: 50%;
+    min-height: 400px;
+    background-color: #eff3f5;
+    padding: 50px 45px;
+    position: relative; }
+    .landing__blog--read h3 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 20px auto;
+      margin-left: 0;
+      border-bottom: 4px solid #3d8ab9;
+      width: 260px;
+      padding-bottom: 10px; }
+    .landing__blog--read p {
+      padding: auto 10px;
+      padding-top: 20px;
+      padding-bottom: 20px; }
+    .landing__blog--read button {
+      background-color: #c9d6de;
+      width: 200px;
+      height: 40px;
+      color: black;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold; }
 
 .search-bar {
   display: inline-block;
@@ -283,7 +327,7 @@
   .search-bar input {
     font-family: "Questrial", sans-serif;
     border: none;
-    border-bottom: solid #42a8e7 3px;
+    border-bottom: solid #3d8ab9 3px;
     width: 250px;
     font-size: 1rem;
     padding: 10px 2px; }
@@ -295,7 +339,7 @@
   display: flex;
   justify-content: center; }
   .shop-all .filter {
-    margin-left: 3%;
+    margin-left: 2%;
     padding: auto 10px;
     padding-left: 3%;
     padding-right: 3%;
@@ -309,7 +353,7 @@
       text-transform: uppercase;
       font-size: 1.3rem;
       padding-bottom: 20px;
-      border-bottom: #42a8e7 solid 3px;
+      border-bottom: #3d8ab9 solid 3px;
       letter-spacing: 2px; }
     .shop-all .filter label {
       padding: 2px 10px;
@@ -322,10 +366,12 @@
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    padding: 30px 20px; }
+    padding: 30px 20px;
+    margin-right: 2%;
+    background-color: #f9f9f9; }
     .shop-all .products-gallery .product {
       display: inline-block;
-      padding: 10px 8px;
+      padding: 10px 5px;
       width: 180px;
       text-align: center;
       font-size: 0.9rem; }
@@ -342,84 +388,119 @@
         width: 100%;
         height: 125px;
         font-size: 0.9rem;
-        padding: 5px; }
+        padding: 5px;
+        border-top: solid 4px #3d8ab9; }
 
 .register {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 50px; }
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #c9d6de; }
   .register .login {
     font-family: "Lato", sans-serif;
-    width: 30%; }
+    width: 100%;
+    position: relative;
+    width: 450px;
+    display: block;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #eff3f5; }
+    .register .login-pic {
+      width: 480px;
+      height: 450px; }
     .register .login h3 {
       text-transform: uppercase;
       font-size: 2rem;
       padding: 30px;
       padding-top: 0;
+      text-align: center;
       letter-spacing: 3px; }
       .register .login h3 .current-register {
-        color: #42a8e7; }
+        color: #3d8ab9; }
       .register .login h3 a.other-register {
         color: black;
         text-decoration: none;
         padding-bottom: 10px; }
       .register .login h3 a:hover.other-register {
-        border-bottom: #42a8e7 solid 3px; }
+        border-bottom: #3d8ab9 solid 3px; }
     .register .login label {
       text-transform: uppercase;
       display: block;
+      padding-left: 30px;
       padding-bottom: 10px; }
     .register .login input {
       width: 400px;
       height: 40px;
       display: block;
+      margin: auto auto;
       margin-bottom: 20px; }
     .register .login .remember-me {
       margin-top: -20px;
       display: flex;
-      align-items: center; }
+      align-items: center;
+      padding-left: 30px; }
       .register .login .remember-me label, .register .login .remember-me input {
         display: inline;
         vertical-align: center;
         padding: 0;
         margin: 0;
         text-transform: capitalize; }
+      .register .login .remember-me label {
+        padding-left: 10px; }
       .register .login .remember-me input {
-        width: 30px;
+        width: 20px;
         height: 60px; }
     .register .login input[type="submit"] {
-      font-size: 3rem;
-      width: 200px;
-      height: 100px;
+      font-size: 1rem;
+      width: 120px;
+      height: 35px;
       text-transform: uppercase;
-      text-align: center; }
+      margin: auto auto;
+      background-color: #c9d6de; }
     .register .login a.forget-password {
-      color: #42a8e7;
-      text-decoration: none; }
+      color: #3d8ab9;
+      text-decoration: none;
+      display: block;
+      margin: auto auto;
+      text-align: center; }
   .register .signup {
     font-family: "Lato", sans-serif;
-    margin: 50px 30px;
-    width: 30%;
-    margin-top: 0; }
+    width: 100%;
+    position: relative;
+    width: 850px;
+    display: block;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #eff3f5; }
+    .register .signup-pic {
+      width: 930px;
+      height: 606px;
+      position: absolute; }
     .register .signup table {
-      margin-left: -170px; }
+      margin: auto auto; }
       .register .signup table td {
         padding-right: 20px; }
+        .register .signup table td label {
+          padding-left: 5px; }
     .register .signup h3 {
       text-transform: uppercase;
       font-size: 2rem;
+      margin: auto auto;
+      display: block;
+      width: 390px;
       padding: 30px;
       padding-top: 0;
       letter-spacing: 3px; }
       .register .signup h3 .current-register {
-        color: #42a8e7; }
+        color: #3d8ab9; }
       .register .signup h3 a.other-register {
         color: black;
         text-decoration: none;
         padding-bottom: 10px; }
       .register .signup h3 a:hover.other-register {
-        border-bottom: #42a8e7 solid 3px; }
+        border-bottom: #3d8ab9 solid 3px; }
     .register .signup label {
       text-transform: uppercase;
       display: block;
@@ -436,10 +517,118 @@
       margin-bottom: 20px;
       font-size: 0.9rem; }
     .register .signup input[type="submit"] {
-      font-size: 1.5rem;
-      width: 70px;
-      height: 30px;
-      text-transform: uppercase; }
+      font-size: 1rem;
+      width: 120px;
+      height: 35px;
+      text-transform: uppercase;
+      margin: auto auto;
+      background-color: #c9d6de; }
+
+.footer {
+  height: 100%;
+  position: relative;
+  padding: 0;
+  background-color: #2f6484;
+  font-family: "Lato", sans-serif;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px; }
+  .footer__links {
+    display: flex;
+    padding: 20px; }
+    .footer__links .information, .footer__links .brands, .footer__links .contact {
+      padding: 20px;
+      display: inline-block;
+      width: 300px; }
+      .footer__links .information h3, .footer__links .brands h3, .footer__links .contact h3 {
+        font-size: 1.2rem;
+        padding: 5px; }
+      .footer__links .information li, .footer__links .brands li, .footer__links .contact li {
+        font-size: 0.9rem;
+        list-style-type: none;
+        color: black;
+        padding: 5px; }
+      .footer__links .information a, .footer__links .brands a, .footer__links .contact a {
+        color: black; }
+    .footer__links .contact {
+      width: 350px; }
+  .footer .chatbox {
+    width: 360px;
+    height: 300px;
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    border: solid 4px black;
+    color: black;
+    text-align: center;
+    border-radius: 20px;
+    background-color: #c9d6de;
+    font-family: "Lato", sans-serif;
+    letter-spacing: 4px; }
+    .footer .chatbox h3 {
+      font-size: 1.3rem;
+      background-color: black;
+      padding: 10px;
+      color: #eff3f5; }
+  .footer__subscribe {
+    background-color: #eff3f5;
+    color: black;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 100%; }
+    .footer__subscribe--newsletter {
+      width: 580px;
+      display: inline-block;
+      border-right: solid 4px #3d8ab9;
+      margin-left: -20px; }
+      .footer__subscribe--newsletter label {
+        font-size: 1.4rem;
+        font-weight: bold;
+        padding: 10px; }
+      .footer__subscribe--newsletter input {
+        width: 400px;
+        height: 40px;
+        padding: 10px; }
+      .footer__subscribe--newsletter button {
+        width: 40px;
+        height: 40px;
+        background-color: #c9d6de;
+        font-size: 1rem; }
+      .footer__subscribe--newsletter button:hover {
+        background-color: #1a1f21;
+        color: #c9d6de; }
+    .footer__subscribe--social {
+      width: 250px;
+      display: inline-block; }
+      .footer__subscribe--social h3 {
+        font-size: 1.3rem;
+        font-weight: bold; }
+    .footer__subscribe .fa {
+      padding: 20px;
+      font-size: 30px;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      text-align: center;
+      text-decoration: none;
+      margin: 5px 2px;
+      margin: 5px; }
+    .footer__subscribe .fa:hover {
+      background: #c9d6de;
+      color: #1a1f21; }
+    .footer__subscribe .fa-instagram, .footer__subscribe .fa-facebook {
+      background: #1a1f21;
+      color: #c9d6de; }
+  .footer__copyright {
+    font-family: "Questrial", sans-serif;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    letter-spacing: 5px;
+    font-size: 0.6rem;
+    text-align: center; }
 
 @media (max-width: 1186px) {
   .search-bar {

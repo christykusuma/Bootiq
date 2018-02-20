@@ -7,7 +7,7 @@ class Landing extends Component {
             return ( 
                 <div>
                     <div class="landing">
-                        <img class="container-fluid" src="Banner-Malvava.jpg"/>    
+                        <img class="landing__ads container-fluid" src="Banner-Januari.jpg"/>    
                         <div class="landing__just-arrived container-fluid">
                             <h3>Just Arrived</h3>
                             <div class="landing__just-arrived--products">
@@ -63,6 +63,8 @@ class Landing extends Component {
                                         Rp 52,500
                                     </div>
                                 </div>
+                                <a class="prev" onclick="plusProduct(-1)">&#10094;</a>
+                                <a class="next" onclick="plusProduct(1)">&#10095;</a> 
                             </div>
                         </div>
                         {/* <div class="landing__brands">
@@ -85,7 +87,7 @@ class Landing extends Component {
                         </div> */}
 
                         <div class="landing__bestsellers container-fluid">
-                            <h3>Best Sellers</h3>
+                            <h3>Top Picks</h3>
                             <div class="landing__bestsellers--products">
                                 <div class="product">
                                     <img src="product-1.jpg"/>
@@ -138,11 +140,20 @@ class Landing extends Component {
                                         Brown<br/>
                                         Rp 52,500
                                     </div>
-                                </div>                          
+                                </div> 
+                                <a class="prev" onclick="plusProduct(-1)">&#10094;</a>
+                                <a class="next" onclick="plusProduct(1)">&#10095;</a>                         
                             </div>
                         </div>
-                        <div class="landing__article container-fluid">
-                            <img src="blog.jpg"/>
+                        <div class="landing__blog container-fluid">
+                            <img class="landing__blog--pic" src="blog.jpg"/>
+                            <div class="landing__blog--read">
+                                <h3>Essential skincare.</h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                </p>
+                                <button>Read more...</button>
+                            </div>
                         </div>
                     </div>
                 </div>
