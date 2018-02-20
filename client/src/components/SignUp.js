@@ -6,9 +6,10 @@ class SignUp extends Component {
         render () {
             return ( 
                 <div className="register">
+                    <img className="signup-pic" src="register.jpg"/>
                     <div className="signup">
+                        <h3><a href="/login" className="other-register">Login</a> or <span className="current-register" href="/signup">Sign Up</span></h3>
                         <form class="signup__form">
-                            <h3><a href="/login" className="other-register">Login</a> or <span className="current-register" href="/signup">Sign Up</span></h3>
                             <table>
                                 <tr>
                                     <td>

@@ -22,6 +22,7 @@ import * as actions from '../actions';
 import '../css/app.css';
 
 import Header from './Header';
+import Footer from './Footer';
 import Landing from './Landing';
 import ShopAll from './ShopAll';
 import Favorites from './Favorites';
@@ -61,8 +62,9 @@ class App extends Component {
           <Route exact path="/category/haircare" component={Landing} />
           <Route exact path="/category/accessories" component={Landing} />
           <Route exact path="/category/men" component={Landing} />
-          
+
           <Route exact path="/products/create" component={Landing} />
+          <Footer />
 				</div>
 			</BrowserRouter>
 		);
