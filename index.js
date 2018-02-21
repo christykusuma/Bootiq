@@ -26,7 +26,7 @@ const app = express();
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(cors())
+app.use(cors());
 
 // parse application/json
 app.use(bodyParser.json({type: '*/*'}));
@@ -49,7 +49,7 @@ require('./routes/categoryRoutes')(app);
 require('./routes/subcategoryRoutes')(app);
 require('./routes/productRoutes')(app);
 require('./routes/brandRoutes')(app);
-require('./routes/localauthRoutes')(app)
+require('./routes/localauthRoutes')(app);
 
 // For Heroku production
 if (process.env.NODE_ENV === 'production') {
