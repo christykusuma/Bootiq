@@ -74,7 +74,9 @@ import axios from 'axios';
 import { 
     FETCH_USER,
     FETCH_BRANDS,
-    FETCH_CATEGORIES
+    FETCH_CATEGORIES,
+    FETCH_SUBCATEGORIES,
+    FETCH_PRODUCTS
 } from './types';
 
 // export const fetchUser = () => {
@@ -94,13 +96,22 @@ export const fetchUser = () => async dispatch => {
 	dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-// Fetches brands
+// Fetches categories
 export const fetchCategories = () => async dispatch => {
     const res = await axios.get('/api/categories/all');
 
     console.log('all the categories', res.data.categories);
 
     dispatch({ type: FETCH_CATEGORIES, payload: res.data.categories});
+};
+
+// Fetches subcategories
+export const fetchSubcategories = () => async dispatch => {
+    const res = await axios.get('/api/subcategories/all');
+
+    console.log('all the subcategories', res.data.subcategories);
+
+    dispatch({ type: FETCH_SUBCATEGORIES, payload: res.data.subcategories});
 };
 
 // Fetches brands
@@ -110,6 +121,15 @@ export const fetchBrands = () => async dispatch => {
     console.log('all the brands', res.data.brands);
 
     dispatch({ type: FETCH_BRANDS, payload: res.data.brands});
+};
+
+// Fetches products
+export const fetchProducts = () => async dispatch => {
+    const res = await axios.get('/api/products/all');
+
+    console.log('all the products', res.data.products);
+
+    dispatch({ type: FETCH_PRODUCTS, payload: res.data.products});
 };
 
 // // Submits a brand

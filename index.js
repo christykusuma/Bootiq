@@ -38,6 +38,7 @@ const bodyParser = require('body-parser');
 //Require in Models
 require('./models/Brand');
 require('./models/Category');
+require('./models/Subcategory');
 require('./models/Product');
 require('./models/User');
 
@@ -69,6 +70,7 @@ app.use(passport.session());
 // Could have done:  require('../routes/authRoutes')(app);
 require('./routes/authRoutes')(app);
 require('./routes/categoryRoutes')(app);
+require('./routes/subcategoryRoutes')(app);
 require('./routes/productRoutes')(app);
 require('./routes/brandRoutes')(app);
 
