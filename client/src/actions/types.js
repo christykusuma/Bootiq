@@ -1,6 +1,7 @@
 export const FETCH_USER = 'fetch_user';
 export const FETCH_BRANDS = 'fetch_brands';
 export const FETCH_CATEGORIES = 'fetch_categories';
+export const FETCH_SUBCATEGORIES = 'fetch_subcategories';
 export const FETCH_PRODUCTS = 'fetch_products';
 
 export const AUTH_USER = 'auth_user';

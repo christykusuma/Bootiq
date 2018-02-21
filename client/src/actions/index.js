@@ -1,5 +1,15 @@
 import axios from 'axios';
-import {  FETCH_USER, FETCH_BRANDS, FETCH_CATEGORIES, AUTH_USER, AUTH_ERROR, UNAUTH_USER  } from './types';
+
+import {  
+  FETCH_USER, 
+  FETCH_BRANDS, 
+  FETCH_CATEGORIES,
+  FETCH_SUBCATEGORIES,
+  FETCH_PRODUCTS,
+  AUTH_USER, 
+  AUTH_ERROR, 
+  UNAUTH_USER  
+} from './types';
 import { BrowserRouter as Router, Redirect} from "react-router-dom";
 
 const ROOT_URL = 'http://localhost:5000'
@@ -11,11 +21,20 @@ export const fetchUser = () => async dispatch => {
 	dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-// Fetches brands
+// Fetches categories
 export const fetchCategories = () => async dispatch => {
     const res = await axios.get('/api/categories/all');
     console.log('all the categories', res.data.categories);
     dispatch({ type: FETCH_CATEGORIES, payload: res.data.categories});
+};
+
+// Fetches subcategories
+export const fetchSubcategories = () => async dispatch => {
+    const res = await axios.get('/api/subcategories/all');
+
+    console.log('all the subcategories', res.data.subcategories);
+
+    dispatch({ type: FETCH_SUBCATEGORIES, payload: res.data.subcategories});
 };
 
 // Fetches brands
@@ -26,7 +45,6 @@ export const fetchBrands = () => async dispatch => {
 };
 
 //  Action Creators for Local User: 
-
 export function signupUser({ fname, lname, email, password, dob, city, country,  }) {
     return function(dispatch) {
         axios.post(`${ROOT_URL}/api/signup`, {fname, lname, email, password, dob, city, country})
@@ -56,7 +74,6 @@ export function signinUser({ email, password }) {
     };
 }
 
-
 // Action Creator to Logout User:
 export function signoutUser () {
     localStorage.removeItem('token');
@@ -71,3 +88,25 @@ export function authError(error) {
         payload: error
     };
 }
+
+// Fetches products
+export const fetchProducts = () => async dispatch => {
+    const res = await axios.get('/api/products/all');
+
+    console.log('all the products', res.data.products);
+
+    dispatch({ type: FETCH_PRODUCTS, payload: res.data.products});
+};
+
+// // Submits a brand
+// export const submitBrand = brand => async (dispatch, getState) => {
+//     const user = getState().auth.id
+//     const res = await axios.post('/api/admin/brands/add', {
+//         ...brand,
+//         _user: user
+//     });
+
+//     console.log('submitted brand', res);
+
+//     dispatch({ type: FETCH_BRANDS, payload: res.data});
+// };
