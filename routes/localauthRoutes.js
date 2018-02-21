@@ -1,9 +1,9 @@
 // For LocalUser login:
-const passport = require('passport');
 const Auth = require('../controllers/authentication');
-const User = require('../models/User');
-const jwt = require('jwt-simple');
-const config = require('../config/dev');
+const passportService = require('../services/localpassport');
+const passport = require('passport');
+
+
 const requireAuth = passport.authenticate('jwt', { session: false });
 const requireSignin = passport.authenticate('local', { session: false });
 
@@ -17,4 +17,8 @@ module.exports = (app) => {
 // Local Login/Signup:
   app.post('/api/signin', requireSignin, Auth.signin);
   app.post('/api/signup', Auth.signup);
+  app.get('/api/logout', (req, res) => {
+    req.logout();
+    res.redirect('/')
+    });
 };

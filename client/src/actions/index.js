@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {  FETCH_USER, FETCH_BRANDS, FETCH_CATEGORIES, AUTH_USER, AUTH_ERROR, UNAUTH_USER  } from './types';
-import { BrowserRouter as Router} from "react-router-dom";
+import { BrowserRouter as Router, Redirect} from "react-router-dom";
 
 const ROOT_URL = 'http://localhost:5000'
 
@@ -33,7 +33,7 @@ export function signupUser({ fname, lname, email, password, dob, city, country, 
             .then(response => {
                 dispatch({type: AUTH_USER });
                 localStorage.setItem('token', response.data.token);
-                Router.push('/');
+                Redirect('/');
             })
             .catch (response => dispatch(authError("COULD NOT SIGNUP")));
     };

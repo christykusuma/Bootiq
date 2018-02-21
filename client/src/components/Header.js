@@ -13,23 +13,35 @@ class Header extends Component {
     constructor(props) {
         super(props);
     }
-
     // Fetch all the brands
     componentDidMount() {
         this.props.fetchBrands();
         this.props.fetchCategories();
     }
-
     renderAdminContent() {
         if (this.props.auth.isAdmin) {
             return (
                 <div>
-                    <a href=""></a>
+                    <a href="/api/logout"></a>
                 </div>
             );
         }
     }
 
+    renderLinksLocal() {
+        if(this.props.authenticated) {
+            <div>
+                <a href ="/logout">Logout</a>
+            </div>
+        } else {
+            return (
+				<div>
+					<a href ="/login">Register/Login</a>
+                    <a href ="/auth/google">Google Login</a>
+				</div>
+			);
+        }
+    }
     // Render appropriate header links (sign in/sign out)
 	renderContent() {
 		if (this.props.auth) {
