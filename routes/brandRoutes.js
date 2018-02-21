@@ -11,7 +11,6 @@ module.exports = (app) => {
         res.send(error);
         console.log("error finding your brands");
       }
-
       res.json({
         message: "Successfully found your brands database",
         brands: brands
@@ -29,21 +28,18 @@ app.post('/api/admin/brands/add', (req,res) => {
   const brand = new Brand();
 
   brand.name = req.body.name;
-  // brand.image = req.body.image;
-  // brand.description = req.body.description;
+  brand.image = req.body.image;
+  brand.description = req.body.description;
 
   brand.save((error, brandSaved) => {
     if(error){
       res.send(error);
       console.log("error saving your brand to the database");
     }
-
     res.json({
       message: "Successfully saved brand to database",
       brandSaved: brandSaved
     });
-  })
-})
-
-
-}
+  });
+});
+};

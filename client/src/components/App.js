@@ -1,19 +1,3 @@
-// import React, { Component } from 'react';
-// import Header from './Header';
-
-// export default class App extends Component {
-//   render() {
-//     return (
-//       <div>
-//         <Header />
-//         {this.props.children}
-//       </div>
-//     );
-//   }
-// }
-
-// GOOGLE OAUTH ------------
-
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -28,6 +12,7 @@ import ShopAll from './ShopAll';
 import Favorites from './Favorites';
 import Login from './Login';
 import SignUp from './SignUp';
+import Logout from './Logout';
 import Sale from './Sale';
 
 // Holds all the other components
@@ -35,7 +20,6 @@ class App extends Component {
 	componentDidMount() {
     this.props.fetchUser();
 	}
-
 	render () {
 		return ( 
 			<BrowserRouter>
@@ -44,6 +28,7 @@ class App extends Component {
 					<Route exact path="/" component={Landing} />
 					<Route exact path="/shop-all" component={ShopAll} />
 					<Route exact path="/login" component={Login} />
+          <Route exact path="/logout" component={Logout} />
 					<Route exact path="/signup" component={SignUp} />
 					<Route exact path="/sale" component={Sale} />
 					<Route exact path="/favorites" component={Favorites} />
@@ -70,7 +55,6 @@ class App extends Component {
 		);
 	}
 };
-
 export default connect(null, actions)(App);
 
 
