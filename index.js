@@ -1,39 +1,12 @@
-// // Main starting point of application
-// // npm run dev
-// const express = require('express');
-// const http = require('http');
-// const bodyParser = require('body-parser'); // Parse as json
-// const morgan = require('morgan'); // Logging framework
-// const app = express();
-// const router = require('./routes/authRoutes');
-// const mongoose = require('mongoose');
-// const cors = require('cors');
-
-// // DB setup
-// mongoose.connect('mongodb://localhost/auth');
-
-// // App setup
-// app.use(morgan('combined'));
-// app.use(cors());
-// app.use(bodyParser.json({ type: '*/*'}));
-// router(app);
-
-
-// // Server setup
-// const port = process.env.PORT  || 3090;
-// const server = http.createServer(app);
-// server.listen(port);
-// console.log('Server listening on:', port);
-
-// GOOGLE OAUTH
-
-// Import express library
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+const morgan = require('morgan');
+
 
 //Require in Models
 require('./models/Brand');
@@ -44,15 +17,18 @@ require('./models/User');
 // Has to come after models
 require('./services/passport');
 
+// DB SETUP:
 mongoose.connect(keys.mongoURI);
 
 const app = express();
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(cors())
 
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json({type: '*/*'}));
 
 // Use cookie session
 app.use(
@@ -71,6 +47,7 @@ require('./routes/authRoutes')(app);
 require('./routes/categoryRoutes')(app);
 require('./routes/productRoutes')(app);
 require('./routes/brandRoutes')(app);
+require('./routes/localauthRoutes')(app)
 
 // For Heroku production
 if (process.env.NODE_ENV === 'production') {

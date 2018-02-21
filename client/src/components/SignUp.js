@@ -1,108 +1,108 @@
-// Sign Up page
-import React, { Component } from 'react'
+// Sign Up Component Page:
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Field, reduxForm} from 'redux-form';
+import * as actions from '../actions';
+
+
+// FOR DOB FIELD:
+import DateTimePicker from 'react-widgets/lib/DateTimePicker';
+import moment from 'moment';
+import momentLocaliser from 'react-widgets-moment';
+import 'react-widgets/dist/css/react-widgets.css';
+momentLocaliser(moment);
+
+
+
+const renderField = field => {
+    const { input, type, meta: { touched, error}  } = field;
+    return (
+        <div>
+            <input {...input} type={type} className="form-control" />
+            {touched && ((error && <span className="error">{error}</span>) )}
+        </div>
+    );
+}
+
+const renderDateTimePicker = ({ input: { onChange, value }, showTime }) =>
+  <DateTimePicker
+    onChange={onChange}
+    format="DD MMM YYYY"
+    time={showTime}
+    value={!value ? null : new Date(value)}
+  />
 
 class SignUp extends Component {
-    
-        render () {
-            return ( 
+
+    handleFormSubmit(formProps) {
+        console.log(formProps);
+        // call action creator to sign up the user
+        this.props.signupUser(formProps);
+    }
+
+    render () {
+        const { handleSubmit, fields: {fname, lname, email, password, dob, city, country }} = this.props;
+        
+        return ( 
                 <div className="register">
                     <img className="signup-pic" src="register.jpg"/>
-                    <div className="signup">
+                        <div className="signup">
                         <h3><a href="/login" className="other-register">Login</a> or <span className="current-register" href="/signup">Sign Up</span></h3>
-                        <form class="signup__form">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <label>First Name</label>
-                                        <input type="text"/>
-                                    </td>
-                                    <td>
-                                        <label>Last Name</label>
-                                        <input type="text"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label>Email</label>
-                                        <input type="text"/>
-                                    </td>
-                                    <td>
-                                        <label>Password</label>
-                                        <input type="password"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <label>Date of Birth</label>
-                                        <select name="month">
-                                            <option value="jan">January</option>
-                                            <option value="feb">February</option>
-                                            <option value="march">March</option>
-                                            <option value="april">April</option>
-                                            <option value="may">May</option>
-                                            <option value="june">June</option>
-                                            <option value="july">July</option>
-                                            <option value="august">August</option>
-                                            <option value="september">September</option>
-                                            <option value="october">October</option>
-                                            <option value="november">November</option>
-                                            <option value="december">December</option>
-                                        </select>
-                                        <select name="day">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <option value="16">16</option>
-                                            <option value="17">17</option>
-                                            <option value="18">18</option>
-                                            <option value="19">19</option>
-                                            <option value="20">20</option>
-                                            <option value="21">21</option>
-                                            <option value="22">22</option>
-                                            <option value="23">23</option>
-                                            <option value="24">24</option>
-                                            <option value="25">25</option>
-                                            <option value="26">26</option>
-                                            <option value="27">27</option>
-                                            <option value="28">28</option>
-                                            <option value="29">29</option>
-                                            <option value="30">30</option>
-                                            <option value="31">31</option>
-                                        </select>
-                                        <select name="year">
-                                            <option value="2018">2018</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label>City</label>
-                                        <input type="text"/>
-                                    </td>
-                                    <td>
-                                        <label>Country</label>
-                                        <input type="text"/>
-                                    </td>
-                                </tr>
-                            </table>
-                            <input type="submit" value="Sign Up"/>
-                        </form>
+                            <form className="signup__form" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+                                <label>First Name:</label>
+                                            <Field 
+                                                name="fname" 
+                                                type="text"
+                                                component={renderField} 
+                                            />
+                                <label>Last Name:</label>
+                                            <Field 
+                                                name="lname" 
+                                                component={renderField}  
+                                                type="text"
+                                            />
+                                <label>Email:</label>
+                                            <Field 
+                                                name="email" 
+                                                component={renderField}  
+                                                type="text"
+                                            />
+                                <label>Password:</label>
+                                            <Field 
+                                                name="password" 
+                                                component={renderField}  
+                                                type="password"
+                                            />                                    
+                                <label>Date of Birth:</label>
+                                            <Field
+                                                name="dob"
+                                                showTime={false}
+                                                component={renderDateTimePicker}
+                                            />
+                                <label>City</label>
+                                            <Field name="city" component={renderField}  type="text"/>                                    
+                                <label>Country</label>
+                                            <Field 
+                                                name="country" 
+                                                component={renderField}  
+                                                type="text"
+                                            />                                      
+                                <button action="submit">Sign Up</button>          
+                            </form>
+                        </div>
                     </div>
-                </div>
             );
         }
     };
     
-export default SignUp;
+
+
+SignUp = reduxForm ({
+    form: "Signup",
+    fields: [ 'fname', 'lname', 'password', 'dob', 'city', 'country']
+}) (SignUp);
+        
+export default connect(null, actions)(SignUp);
+    
+
+

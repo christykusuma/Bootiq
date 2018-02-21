@@ -11,7 +11,7 @@ class Login extends Component {
                     </div>
                     <div className="login">
                         <h3><span className="current-register">Login</span> or <a className="other-register" href="/signup">Sign Up</a></h3>
-                        <form class="login__form">
+                        <form className="login__form">
                             <label>Email Address</label>
                             <input type="text"/>
                             <label>Password</label>

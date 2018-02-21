@@ -1,5 +1,5 @@
 // Shop all page
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class ShopAll extends Component {
     

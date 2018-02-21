@@ -5,7 +5,7 @@ import * as actions from '../../actions';
 
 const renderInput = ({ label, type, ...field, meta: {touched, error, warning}}) => {
     return (
-        <fieldset className="form-group">
+        <fieldset>
             <label>{label}:</label>
             <input {...field.input} type={type} className="form-control" />
             {touched && error && <span className="error">{error}</span>}
@@ -25,7 +25,7 @@ class Signup extends Component {
     renderAlert() {
         if (this.props.errorMessage) {
             return (
-                <div className="alert alert-danger">
+                <div>
                   <strong>Oops!</strong> {this.props.errorMessage}
                 </div>
             );
