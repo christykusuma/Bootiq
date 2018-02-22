@@ -12,8 +12,6 @@ import {
 } from './types';
 import { BrowserRouter as Router, Redirect} from "react-router-dom";
 
-const ROOT_URL = 'http://localhost:5000'
-
 // Fetches user data
 export const fetchUser = () => async dispatch => {
     const res = await axios.get('/api/current_user');
@@ -47,7 +45,7 @@ export const fetchBrands = () => async dispatch => {
 //  Action Creators for Local User: 
 export function signupUser({ fname, lname, email, password, dob, city, country,  }) {
     return function(dispatch) {
-        axios.post(`${ROOT_URL}/api/signup`, {fname, lname, email, password, dob, city, country})
+        axios.post('/api/signup', {fname, lname, email, password, dob, city, country})
             .then(response => {
                 dispatch({type: AUTH_USER });
                 localStorage.setItem('token', response.data.token);
@@ -61,7 +59,7 @@ export function signupUser({ fname, lname, email, password, dob, city, country, 
 export function signinUser({ email, password }) {
     return function (dispatch) {
         // submit email/password to the server
-        axios.post(`${ROOT_URL}/api/signin`, { email, password })
+        axios.post('/api/signin', { email, password })
             .then( response => {
                 dispatch({type: AUTH_USER });
                 // Save the JWT token
