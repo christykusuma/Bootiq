@@ -6,6 +6,7 @@ import {
   FETCH_CATEGORIES,
   FETCH_SUBCATEGORIES,
   FETCH_PRODUCTS,
+  FETCH_CART,
   AUTH_USER, 
   AUTH_ERROR, 
   UNAUTH_USER  
@@ -96,15 +97,18 @@ export const fetchProducts = () => async dispatch => {
     dispatch({ type: FETCH_PRODUCTS, payload: res.data.products});
 };
 
-// // Submits a brand
-// export const submitBrand = brand => async (dispatch, getState) => {
-//     const user = getState().auth.id
-//     const res = await axios.post('/api/admin/brands/add', {
-//         ...brand,
-//         _user: user
-//     });
+// Submit product to shopping cart
+export const submitProduct = product => async (dispatch, getState) => {
+    const user = getState().auth.id;
+    console.log('user info:', user);
+    console.log('product id', product._id);
 
-//     console.log('submitted brand', res);
+	const res = await axios.post('/api/shoppingcart/add', {
+        ...product,
+        _user: user
+	});
 
-//     dispatch({ type: FETCH_BRANDS, payload: res.data});
-// };
+    console.log('submitted product to shopping cart successfully');
+
+    // dispatch({ type: FETCH_CART, payload: res.data });
+} 
