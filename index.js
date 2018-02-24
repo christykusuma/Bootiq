@@ -14,6 +14,7 @@ require('./models/Category');
 // require('./models/Subcategory');
 require('./models/Product');
 require('./models/User');
+require('./models/Cart');
 
 // Has to come after models
 require('./services/passport');
@@ -49,6 +50,7 @@ require('./routes/categoryRoutes')(app);
 // require('./routes/subcategoryRoutes')(app);
 require('./routes/productRoutes')(app);
 require('./routes/brandRoutes')(app);
+require('./routes/cartRoutes')(app);
 require('./routes/localauthRoutes')(app);
 
 // For Heroku production

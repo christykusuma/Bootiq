@@ -48,45 +48,59 @@ class SignUp extends Component {
                         <a href="/login" className="other-register">Login</a> or <span className="current-register" href="/signup">Sign Up</span>
                     </h3>
                     <form className="signup__form" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-                        <label>First Name:</label>
-                        <Field 
-                            name="fname" 
-                            type="text"
-                            component={renderField} 
-                        />
-                        <label>Last Name:</label>
-                        <Field 
-                            name="lname" 
-                            component={renderField}  
-                            type="text"
-                        />
-                        <label>Email:</label>
-                        <Field 
-                            name="email" 
-                            component={renderField}  
-                            type="text"
-                        />
-                        <label>Password:</label>
-                        <Field 
-                            name="password" 
-                            component={renderField}  
-                            type="password"
-                        />                                    
-                        <label>Date of Birth:</label>
-                        <Field
-                            name="dob"
-                            showTime={false}
-                            component={renderDateTimePicker}
-                        />
-                        <label>City</label>
-                        <Field name="city" component={renderField}  type="text"/>     
-                        <label>Country</label>
+                        <span className="form-field">
+                            <label>First Name:</label>
                             <Field 
-                                name="country" 
+                                name="fname" 
+                                type="text"
+                                component={renderField} 
+                            />
+                        </span>
+                        <span className="form-field">
+                            <label>Last Name:</label>
+                            <Field 
+                                name="lname" 
                                 component={renderField}  
                                 type="text"
-                            />                                      
-                        <button action="submit">Sign Up</button>          
+                            />
+                        </span>
+                        <span className="form-field">
+                            <label>Email:</label>
+                            <Field 
+                                name="email" 
+                                component={renderField}  
+                                type="text"
+                            />
+                        </span>
+                        <span className="form-field">
+                            <label>Password:</label>
+                            <Field 
+                                name="password" 
+                                component={renderField}  
+                                type="password"
+                            />   
+                        </span>
+                        <span className="form-field">         
+                            <label>Date of Birth:</label>
+                            <Field
+                                name="dob"
+                                showTime={false}
+                                component={renderDateTimePicker}
+                            />
+                        </span>
+                        <span className="form-field">
+                            <label>City</label>
+                            <Field name="city" component={renderField}  type="text"/> 
+                        </span> 
+                        <span className="form-field">   
+                        <label>Country</label>
+                        <Field 
+                            name="country" 
+                            component={renderField}  
+                            type="text"
+                        />   
+                        </span>                                   
+                        <button action="submit">Sign Up</button>        
                     </form>
                 </div>
             </div>

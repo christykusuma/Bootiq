@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {
-    fetchProducts
+    fetchProducts,
+    submitProduct
 } from "../actions/index";
 
 import { bindActionCreators } from 'redux';
@@ -27,6 +28,9 @@ class ProductList extends Component {
                         Rosso Asiago<br/>
                         {product.price}
                     </div>
+                    <button class="product-add" onClick={() => this.props.submitProduct(product)}>
+                        Add to cart
+                    </button>
                 </div>
             );
         });
@@ -49,7 +53,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        fetchProducts
+        fetchProducts,
+        submitProduct
     }, dispatch);
 }
 
