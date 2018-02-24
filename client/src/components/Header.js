@@ -17,7 +17,6 @@ class Header extends Component {
     componentDidMount() {
         this.props.fetchBrands();
         this.props.fetchCategories();
-        console.log('authentication problem', this.props.auth);
     }
     renderAdminContent() {
         if (this.props.auth.isAdmin) {
