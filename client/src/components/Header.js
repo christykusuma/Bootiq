@@ -2,9 +2,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
-import { 
+import {
     fetchBrands,
-    fetchCategories 
+    fetchCategories
 } from '../actions/index';
 
 import { bindActionCreators } from 'redux';
@@ -27,9 +27,8 @@ class Header extends Component {
             );
         }
     }
-
     renderLinksLocal() {
-        if(this.props.authenticated) {
+        if(this.props.auth) {
             <div>
                 <a href ="/logout">Logout</a>
             </div>
@@ -37,7 +36,7 @@ class Header extends Component {
             return (
 				<div>
 					<a href ="/login">Register/Login</a>
-                    <a href ="/auth/google">Google Login</a>
+          <a href ="/auth/google">Google Login</a>
 				</div>
 			);
         }
@@ -47,19 +46,20 @@ class Header extends Component {
 		if (this.props.auth) {
 			return (
 				<div>
-					<a href ="/api/logout">Logout</a>
+					<a href ="/api/logout">Google Logout</a>
+                    <a href ="/logout">Logout</a>
 				</div>
 			);
 		} else {
 			return (
 				<div>
 					<a href ="/login">Register/Login</a>
-                    <a href ="/auth/google">Google Login</a>
+          <a href ="/auth/google">Google Login</a>
 				</div>
 			);
 		}
     }
-    
+
     // Render brand names
     renderBrands() {
         return this.props.brands.map((brand) => {
@@ -79,7 +79,7 @@ class Header extends Component {
     }
 
     render () {
-        return ( 
+        return (
             <div>
                 <div className="header">
                     <div className="header__top--contact">
@@ -139,9 +139,9 @@ class Header extends Component {
         );
     }
 };
-    
+
 function mapStateToProps(state) {
-	return { 
+	return {
         auth: state.auth,
         brands: state.brands,
         categories: state.categories
@@ -154,5 +154,5 @@ function mapDispatchToProps(dispatch) {
         fetchCategories
     }, dispatch);
 }
-    
+
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
