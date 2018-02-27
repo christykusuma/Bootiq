@@ -31,11 +31,11 @@ const userSchema = new Schema({
         fname: String,
         lname: String
     },
-    shoppingCart: [{
+    _cart: [{
         type: Schema.Types.ObjectId,
         ref: 'product'
     }],
-    whishList: [{
+    _wishlist: [{
         type: Schema.Types.ObjectId,
         ref: 'product'
     }],
@@ -74,4 +74,4 @@ userSchema.methods.comparePassword = function (candidatePassword, callback) {
     });
 };
 
-module.exports = mongoose.model('users', userSchema);
+module.exports = mongoose.model('user', userSchema);

@@ -14,7 +14,7 @@ exports.signin = function (req, res, next) {
 
 exports.signup = function (req, res, next) {
     const fname = req.body.fname;
-    const lname = req.body. lname;
+    const lname = req.body.lname;
     const email = req.body.email;
     const password = req.body.password;
     const dob = req.body.dob;

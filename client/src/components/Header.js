@@ -18,15 +18,15 @@ class Header extends Component {
         this.props.fetchBrands();
         this.props.fetchCategories();
     }
-    renderAdminContent() {
-        if (this.props.auth.isAdmin) {
-            return (
-                <div>
-                    <a href="/api/logout"></a>
-                </div>
-            );
-        }
-    }
+    // renderAdminContent() {
+    //     if (this.props.auth.isAdmin) {
+    //         return (
+    //             <div>
+    //                 <a href="/api/logout"></a>
+    //             </div>
+    //         );
+    //     }
+    // }
     renderLinksLocal() {
         if(this.props.auth) {
             <div>
@@ -44,6 +44,7 @@ class Header extends Component {
     // Render appropriate header links (sign in/sign out)
 	renderContent() {
 		if (this.props.auth) {
+            console.log(this.props.auth);
 			return (
 				<div>
 					<a href ="/api/logout">Google Logout</a>
