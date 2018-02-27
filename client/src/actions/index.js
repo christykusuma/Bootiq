@@ -11,12 +11,12 @@ import {
   UNAUTH_USER  
 } from './types';
 
-// Fetches user data
-export const fetchUser = () => async dispatch => {
-    const res = await axios.get('/api/current_user');
-    console.log('user info', res.data);
-	dispatch({ type: FETCH_USER, payload: res.data });
-};
+// // Fetches user data
+// export const fetchUser = () => async dispatch => {
+//     const res = await axios.get('/api/current_user');
+//     console.log('user info', res.data);
+// 	dispatch({ type: FETCH_USER, payload: res.data });
+// };
 
 // Fetches categories
 export const fetchCategories = () => async dispatch => {
@@ -36,19 +36,6 @@ export const fetchBrands = () => async dispatch => {
     dispatch({ type: FETCH_BRANDS, payload: res.data.brands});
 };
 
-//  Action Creators for Local User: 
-export function signupUser({ fname, lname, email, password, dob, city, country,  }) {
-    return function(dispatch) {
-        axios.post('/api/signup', {fname, lname, email, password, dob, city, country})
-            .then(response => {
-                dispatch({type: AUTH_USER });
-                localStorage.setItem('token', response.data.token);
-                Redirect('/');
-            })
-            .catch (response => dispatch(authError("COULD NOT SIGNUP")));
-    };
-}
-
 // Action Creator to Login User: 
 export function signinUser({ email, password }) {
     return function (dispatch) {
@@ -67,9 +54,9 @@ export function signinUser({ email, password }) {
 }
 
 //  Action Creators for Local User:
-export function signupUser({ fname, lname, email, password, dob, city, country  }) {
-    return function(dispatch) {
-        axios.post(`/api/signup`, {fname, lname, email, password, dob, city, country})
+export function signupUser({ fname, lname, email, password, dob, city, country }) {
+    return function (dispatch) {
+        axios.post('/api/signup', { fname, lname, email, password, dob, city, country })
             .then(response => {
                 dispatch({type: AUTH_USER });
                 localStorage.setItem('token', response.data.token);
