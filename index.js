@@ -10,9 +10,10 @@ const http = require('http');
 //Require in Models
 require('./models/Brand');
 require('./models/Category');
-require('./models/Subcategory');
+// require('./models/Subcategory');
 require('./models/Product');
 require('./models/User');
+require('./models/Cart');
 
 // Has to come after models
 require('./services/passport');
@@ -35,10 +36,10 @@ app.use(bodyParser.json({type: '*/*'}));
 require('./routes/localauthRoutes')(app);
 require('./routes/authRoutes')(app);
 require('./routes/categoryRoutes')(app);
-require('./routes/subcategoryRoutes')(app);
+// require('./routes/subcategoryRoutes')(app);
 require('./routes/productRoutes')(app);
 require('./routes/brandRoutes')(app);
-
+require('./routes/cartRoutes')(app);
 
 // For Heroku production
 if (process.env.NODE_ENV === 'production') {

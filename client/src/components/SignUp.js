@@ -1,9 +1,8 @@
-// Sign Up Component Page:
+// Sign up page:
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm} from 'redux-form';
 import * as actions from '../actions';
-
 
 // FOR DOB FIELD:
 import DateTimePicker from 'react-widgets/lib/DateTimePicker';
@@ -11,8 +10,6 @@ import moment from 'moment';
 import momentLocaliser from 'react-widgets-moment';
 import 'react-widgets/dist/css/react-widgets.css';
 momentLocaliser(moment);
-
-
 
 const renderField = field => {
     const { input, type, meta: { touched, error}  } = field;
@@ -40,7 +37,6 @@ class SignUp extends Component {
 
     render () {
         const { handleSubmit, fields: {fname, lname, email, password, dob, city, country }} = this.props;
-
         return (
                 <div className="register">
                     <img className="signup-pic" src="register.jpg"/>
