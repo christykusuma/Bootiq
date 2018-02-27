@@ -2,54 +2,45 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('../config/keys');
+const config = require("../config/dev");
 const mongoose = require('mongoose');
+const user = mongoose.model('users');
 
-const User = mongoose.model('users');
-
-// Setup cookie to track our User
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
-
-passport.deserializeUser((id, done) => {
-  //Find user by googleId
-  User.findById(id).then(user => {
-        //callback to deserializeUser
-        done(null, user);
-  });
-});
-
-//Create new instance of Google Strategy to
-//add user to database
+//Create new instance of Google Strategy to add user to database
 passport.use(
     new GoogleStrategy({
         clientID: keys.googleClientID,
         clientSecret: keys.googleClientSecret,
-        callbackURL: '/auth/google/callback',
-        proxy: true 
+        callbackURL: '/auth/google/callback'
     },
     (accessToken, refreshToken, profile, done) => {
-        // console.log('access token', accessToken);
-        // console.log('refresh token', refreshToken);
-        // console.log('profile', profile);
-        console.log('profile', profile.emails);
-        User.findOne({ googleID: profile.id })
+        console.log('google.googleID', profile.id);
+        user.findOne({ 'google.googleID': profile.id})
             .then(( existingUser ) => {
                 if (existingUser) {
-                    // We already have a record with the given profile ID
+                    // Record with the given profile ID
                     done(null, existingUser);
-                } else {
-                    // we don't have a user record with thi sID, make a new record
-                    new User({
+                }
+                else {
+                    new user({
+                      method: 'google',
+                      google: {
                         googleID: profile.id,
-                        fname: profile.name.givenName, 
+                        fname: profile.name.givenName,
                         lname: profile.name.familyName,
-                        email: profile.emails[0].value,
-                        password: profile.id,
-                        isAdmin: false
+                        email: profile.emails[0].value
+                      }
                     }).save()
                     .then(user => done(null, user));
                 }
+
             });
     })
 );
+
+
+//
+function tokenForUser(user) {
+    const timestamp = new Date().getTime();
+    return jwt.encode({ sub: user.id }, config.secret);
+}

@@ -1,4 +1,3 @@
-// Login page
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
@@ -16,9 +15,21 @@ const renderInput = field => {
 
 class Login extends Component {
     
-    handleFormSubmit = ({ email, password }) => {
-        this.props.signinUser({ email, password })
-      }
+    handleFormSubmit( { email, password } ) {
+        // Need to do something to log user in
+        this.props.signinUser ( { email, password });   
+    }
+
+    renderAlert() {
+        if(this.props.errorMessage) {
+            return (
+                <div className="alert alert-danger">
+                    <strong> Oops! </strong> {this.props.errorMessage}
+                </div>
+            );
+        }
+    }
+
 
     render () {
         const { handleSubmit, fields: {email, password }} = this.props;
@@ -30,24 +41,19 @@ class Login extends Component {
                 </div>
                 <div className="login">
                     <h3><span className="current-register">Login</span> or <a className="other-register" href="/signup">Sign Up</a></h3>
-                    <form className="login__form" onSubmit={handleSubmit(this.handleFormSubmit)}>
+                    <form className="login__form" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                             <label>Email Address</label>
                             <Field name="email" 
                                    component={renderInput} 
-                                   type="email" 
+                                   type="text" 
                             />
                             <label>Password</label>
                             <Field name="password" 
                                    component={renderInput} 
                                    type="password" 
                             />
-                            {/* <div className="remember-me">
-                                <input type="checkbox"/>
-                                <label>Remember Me</label>
-                            </div> */}
                             <button type="submit" className="btn btn-primary">Sign In</button>
-                            {/* <a className="forget-password" href="#">Forgot account?</a> */}
-                    </form>
+                     </form>
                     </div>
                 </div>
             );
@@ -58,10 +64,10 @@ class Login extends Component {
 
 
 
+Login = reduxForm({
+    form: "login",
+    fields:  ['email', 'password']
+}) (Login)
 
-const form = reduxForm({ 
-    form: 'signin',
-    fields: ['email', 'password'] 
-})(Login)
 
-export default connect(null, actions)(form)
+export default connect(null, actions)(Login)

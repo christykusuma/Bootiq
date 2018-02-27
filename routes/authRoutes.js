@@ -1,5 +1,21 @@
 // Routes that require a user to be signed in
 const passport = require('passport');
+const jwt = require('jwt-simple');
+const passportService = require('../services/passport')
+const config = require("../config/dev");
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+const JwtStrategy = require ("passport-jwt").Strategy;
+
+function tokenForUser(user) {
+  const timestamp = new Date().getTime();
+  return jwt.encode({ sub: user.id, iat: timestamp }, config.secret);
+}
+
+
+const jwtOptions = {
+    jwtFromRequest: ExtractJwt.fromHeader('auth'),
+    secretOrKey: config.secret
+};
 
 //GOOGLE LOGIN
 module.exports = (app) => {
@@ -13,15 +29,17 @@ module.exports = (app) => {
   });
 
   app.get(
-      '/auth/google/callback', 
-      passport.authenticate('google'), 
+      '/auth/google/callback',
+      passport.authenticate('google', {
+        session: false,
+        successRedirect : '/',
+        failureRedirect : '/'
+  }),
       (req, res) => {
-            res.redirect('/');
+        console.log(token);
+        res.json({token : tokenForUser(user) })
+        res.cookie('auth', token); // Choose whatever name you'd like for that cookie,
+        res.redirect('http://localhost:3000');
         }
     );
-
-  app.get('/api/current_user/', (req, res) => {
-    res.send(req.user);
-  });
 };
-

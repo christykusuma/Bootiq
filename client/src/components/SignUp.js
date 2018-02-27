@@ -30,90 +30,68 @@ const renderDateTimePicker = ({ input: { onChange, value }, showTime }) =>
   />
 
 class SignUp extends Component {
-
     handleFormSubmit(formProps) {
-        console.log('Handling form submit', formProps);
         // call action creator to sign up the user
         this.props.signupUser(formProps);
     }
 
     render () {
         const { handleSubmit, fields: {fname, lname, email, password, dob, city, country }} = this.props;
-        
-        return ( 
-            <div className="register">
-                <img className="signup-pic" src="register.jpg"/>
-                <div className="signup">
-                    <h3>
-                        <a href="/login" className="other-register">Login</a> or <span className="current-register" href="/signup">Sign Up</span>
-                    </h3>
-                    <form className="signup__form" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-                        <span className="form-field">
-                            <label>First Name:</label>
-                            <Field 
-                                name="fname" 
-                                type="text"
-                                component={renderField} 
-                            />
-                        </span>
-                        <span className="form-field">
-                            <label>Last Name:</label>
-                            <Field 
-                                name="lname" 
-                                component={renderField}  
-                                type="text"
-                            />
-                        </span>
-                        <span className="form-field">
-                            <label>Email:</label>
-                            <Field 
-                                name="email" 
-                                component={renderField}  
-                                type="text"
-                            />
-                        </span>
-                        <span className="form-field">
-                            <label>Password:</label>
-                            <Field 
-                                name="password" 
-                                component={renderField}  
-                                type="password"
-                            />   
-                        </span>
-                        <span className="form-field">         
-                            <label>Date of Birth:</label>
-                            <Field
-                                name="dob"
-                                showTime={false}
-                                component={renderDateTimePicker}
-                            />
-                        </span>
-                        <span className="form-field">
-                            <label>City</label>
-                            <Field name="city" component={renderField}  type="text"/> 
-                        </span> 
-                        <span className="form-field">   
-                        <label>Country</label>
-                        <Field 
-                            name="country" 
-                            component={renderField}  
-                            type="text"
-                        />   
-                        </span>                                   
-                        <button action="submit">Sign Up</button>        
-                    </form>
-                </div>
-            </div>
-        );
-    }
-};
-    
+        return (
+                <div className="register">
+                    <img className="signup-pic" src="register.jpg"/>
+                        <div className="signup">
+                        <h3><a href="/login" className="other-register">Login</a> or <span className="current-register" href="/signup">Sign Up</span></h3>
+                            <form className="signup__form" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+                                <label>First Name:</label>
+                                            <Field
+                                                name="fname"
+                                                type="text"
+                                                component={renderField}
+                                            />
+                                <label>Last Name:</label>
+                                            <Field
+                                                name="lname"
+                                                component={renderField}
+                                                type="text"
+                                            />
+                                <label>Email:</label>
+                                            <Field
+                                                name="email"
+                                                component={renderField}
+                                                type="text"
+                                            />
+                                <label>Password:</label>
+                                            <Field
+                                                name="password"
+                                                component={renderField}
+                                                type="password"
+                                            />
+                                <label>Date of Birth:</label>
+                                            <Field
+                                                name="dob"
+                                                showTime={false}
+                                                component={renderDateTimePicker}
+                                            />
+                                <label>City</label>
+                                            <Field name="city" component={renderField}  type="text"/>
+                                <label>Country</label>
+                                            <Field
+                                                name="country"
+                                                component={renderField}
+                                                type="text"
+                                            />
+                                <button action="submit">Sign Up</button>
+                            </form>
+                        </div>
+                    </div>
+            );
+        }
+    };
+
 SignUp = reduxForm ({
     form: "Signup",
     fields: [ 'fname', 'lname', 'password', 'dob', 'city', 'country']
 }) (SignUp);
-        
+
 export default connect(null, actions)(SignUp);
-    
-
-

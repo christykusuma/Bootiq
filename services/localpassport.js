@@ -1,22 +1,20 @@
+//LOCAL LOGIN------------------------------
 const passport = require('passport');
-const User = require("../models/User");
-const config = require("../config/dev");
 const JwtStrategy = require ("passport-jwt").Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
-const LocalStrategy = require('passport-local');
+const LocalStrategy = require('passport-local').Strategy;
+const config = require("../config/dev");
+const keys = require('../config/keys');
+const User = require("../models/User");
 
 // Create local strategy:
 const localOptions = { usernameField: 'email'}
 const localLogin = new LocalStrategy ( localOptions, function(email, password, done){
-    // verify this email and password, call done with the user
-    // if it is the correct email and password
-    // otherwise, call done with false
-    User.findOne({email: email}, function(err, user){
+    User.findOne({'local.email': email}, function(err, user){
         // if there is an error when tryig to log in
         if (err) {return done(err); }
         // if the user info doesnt exists
         if (!user) { return done(null, false); }
-        //  compare passwords: is "password" equal to user.password 
         user.comparePassword(password, function(err, isMatch) {
             if(err) { return done(err); }
             if (!isMatch) { return done(null, false);}
@@ -27,15 +25,12 @@ const localLogin = new LocalStrategy ( localOptions, function(email, password, d
 
 // Setup Options for JWT Strategy
 const jwtOptions = {
-    jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+    jwtFromRequest: ExtractJwt.fromHeader('auth'),
     secretOrKey: config.secret
 };
 const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
-    // see if the user ID in the payload exists in our database 
-    // if it does, call "done" with that other
-    // otherwise, call done without a user object
     User.findById(payload.sub, function(err,user) {
-        if (err) { return done(err, false); 
+        if (err) { return done(err, false);
         }
         if(user) {
             done(null, user);
@@ -44,7 +39,6 @@ const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
         }
     });
 });
-
 // Tell passport to use this strategy:
 passport.use(jwtLogin);
 passport.use(localLogin);
