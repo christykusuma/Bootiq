@@ -8,9 +8,8 @@ import {
 // State will always be either null, user model or false
 export default function(state = null, action) {
 	switch (action.type) {
-
 		case AUTH_USER:
-            return { ...state, error: '', auth: true };
+            return { ...state, error: '', auth: true, user: action.payload };
         case UNAUTH_USER:
             return { ...state, auth: false };
         case AUTH_ERROR:
