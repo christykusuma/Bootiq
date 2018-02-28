@@ -16,11 +16,10 @@ const userSchema = new Schema({
             lowercase: true
         },
         password: {
-                type: String
+            type: String
         },
-        dob: String,
         city: String,
-        country: String,
+        country: String
     },
     google: {
         googleID: String,
@@ -74,4 +73,4 @@ userSchema.methods.comparePassword = function (candidatePassword, callback) {
     });
 };
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('users', userSchema);

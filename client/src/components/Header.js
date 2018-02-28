@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 
 import {
     fetchBrands,
-    fetchCategories
+    fetchCategories,
+    signoutUser,
+    fetchUser
 } from '../actions/index';
 
 import { bindActionCreators } from 'redux';
@@ -12,12 +14,19 @@ import { bindActionCreators } from 'redux';
 class Header extends Component {
     constructor(props) {
         super(props);
+
+        this.handleLogout = this.handleLogout.bind(this);
     }
     // Fetch all the brands
     componentDidMount() {
         this.props.fetchBrands();
         this.props.fetchCategories();
     }
+
+    handleLogout = (event) => {
+        this.props.signoutUser();
+    }
+
     // renderAdminContent() {
     //     if (this.props.auth.isAdmin) {
     //         return (
@@ -27,35 +36,36 @@ class Header extends Component {
     //         );
     //     }
     // }
-    renderLinksLocal() {
-        if(this.props.auth) {
-            <div>
-                <a href ="/logout">Logout</a>
-            </div>
-        } else {
-            return (
-				<div>
-					<a href ="/login">Register/Login</a>
-          <a href ="/auth/google">Google Login</a>
-				</div>
-			);
-        }
-    }
+    // renderLinksLocal() {
+    //     if(this.props.auth) {
+    //         <div>
+    //             <a href ="/logout">Logout</a>
+    //         </div>
+    //     } else {
+    //         return (
+	// 			<div>
+	// 				<a href ="/login">Register/Login</a>
+    //                 <a href ="/auth/google">Google Login</a>
+	// 			</div>
+	// 		);
+    //     }
+    // }
     // Render appropriate header links (sign in/sign out)
 	renderContent() {
 		if (this.props.auth) {
-            console.log(this.props.auth);
+            // this.props.fetchUser();
+            console.log('hellow true or false:', this.props.auth);
 			return (
 				<div>
-					<a href ="/api/logout">Google Logout</a>
-                    <a href ="/logout">Logout</a>
+                    <a href="/" onClick={this.handleLogout}>Local Logout</a>
+					<a href="/api/logout">Google Logout</a>
 				</div>
 			);
 		} else {
 			return (
 				<div>
-					<a href ="/login">Register/Login</a>
-          <a href ="/auth/google">Google Login</a>
+					<a href="/login">Register/Login</a>
+                    <a href="/auth/google">Google Login</a>
 				</div>
 			);
 		}
@@ -96,7 +106,7 @@ class Header extends Component {
                         <li>
                             <ul>{this.renderContent()}</ul>
                             <ul>+Wishlist</ul>
-                            <ul>My Bag (0 Items)</ul>
+                            <ul><a href="/shoppingcart">My Bag (0 Items)</a></ul>
                         </li>
                     </div>
                     <div className="header__logo">
@@ -145,14 +155,17 @@ function mapStateToProps(state) {
 	return {
         auth: state.auth,
         brands: state.brands,
-        categories: state.categories
+        categories: state.categories,
+        user: state.auth.user
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         fetchBrands,
-        fetchCategories
+        fetchCategories,
+        signoutUser,
+        fetchUser
     }, dispatch);
 }
 
