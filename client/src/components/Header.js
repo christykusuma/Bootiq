@@ -57,15 +57,15 @@ class Header extends Component {
             console.log('hellow true or false:', this.props.auth);
 			return (
 				<div>
-                    <a href="/" onClick={this.handleLogout}>Local Logout</a>
-					<a href="/api/logout">Google Logout</a>
+                    <a href="/" onClick={this.handleLogout}>Logout</a>
+					{/* <a href="/api/logout">Google Logout</a> */}
 				</div>
 			);
 		} else {
 			return (
 				<div>
 					<a href="/login">Register/Login</a>
-                    <a href="/auth/google">Google Login</a>
+                    {/* <a href="/auth/google">Google Login</a> */}
 				</div>
 			);
 		}
