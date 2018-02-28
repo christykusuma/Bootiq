@@ -12,8 +12,8 @@ import ShopAll from './ShopAll';
 import Favorites from './Favorites';
 import Login from './Login';
 import SignUp from './SignUp';
-import Logout from './Logout';
 import Sale from './Sale';
+import Cart from './Cart';
 
 // Holds all the other components
 class App extends Component {
@@ -28,8 +28,8 @@ class App extends Component {
 					<Route exact path="/" component={Landing} />
 					<Route exact path="/shop-all" component={ShopAll} />
 					<Route exact path="/login" component={Login} />
-          <Route exact path="/logout" component={Logout} />
 					<Route exact path="/signup" component={SignUp} />
+          <Route exact path="/shoppingcart" component={Cart} />
 					<Route exact path="/sale" component={Sale} />
 					<Route exact path="/favorites" component={Favorites} />
           <Route exact path="/brand/create" component={Landing} />

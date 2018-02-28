@@ -2,9 +2,9 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('../config/keys');
-const config = require("../config/dev");
+const config = require('../config/dev');
 const mongoose = require('mongoose');
-const user = mongoose.model('user');
+const user = mongoose.model('users');
 
 //Create new instance of Google Strategy to add user to database
 passport.use(
@@ -33,11 +33,9 @@ passport.use(
                     }).save()
                     .then(user => done(null, user));
                 }
-
             });
     })
 );
-
 
 //
 function tokenForUser(user) {

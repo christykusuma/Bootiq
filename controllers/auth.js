@@ -3,13 +3,20 @@ const User = require('../models/User');
 const jwt = require('jwt-simple');
 const config = require('../config/dev');
 
+// Creating token for suer
 function tokenForUser(user) {
     const timestamp = new Date().getTime();
-    return jwt.encode({ sub: user.id }, config.secret);
+    return jwt.encode({ 
+        sub: user.id,
+        name: user.name,
+        admin: user.admin
+    }, config.secret);
 }
 
 exports.signin = function (req, res, next) {
-    res.send ( { token: tokenForUser(req.user) });
+    console.log('User token is', tokenForUser(req.user));
+    res.send( { 
+        token: tokenForUser(req.user) });
 };
 
 exports.signup = function (req, res, next) {
@@ -17,15 +24,18 @@ exports.signup = function (req, res, next) {
     const lname = req.body.lname;
     const email = req.body.email;
     const password = req.body.password;
-    const dob = req.body.dob;
+    // const dob = req.body.dob;
     const city = req.body.city;
     const country = req.body.country;
+    const admin = false;
     if (!email || !password) {
         return res.status(422).send({error: 'You must provide email and password'});
     }
     // See if a user with a give email exists
     User.findOne({ 'local.email': email }, function(err,existingUser) {
-        if (err) { return next(err);}
+        if (err) { 
+            return next(err);
+        }
         if (existingUser) {
             return res.status(422).send({ error: "Email is in use" });
         }
@@ -38,15 +48,16 @@ exports.signup = function (req, res, next) {
             lname: lname,
             email: email,
             password: password,
-            dob: dob,
+            // dob: dob,
             city: city,
-            country: country
+            country: country,
+            admin: admin
         }
     });
     // If a user with Email does NOT exist  create and save user record
     user.save( function(err) {
         if (err) { return next(err); }
         // Respond to request indicating the user was created
-        res.json({token : tokenForUser(user) });
+        res.json({ token: tokenForUser(user) });
     });
 };

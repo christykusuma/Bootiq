@@ -6,6 +6,7 @@ import {
   FETCH_SUBCATEGORIES,
   FETCH_PRODUCTS,
   FETCH_CART,
+  FETCH_USER,
   AUTH_USER, 
   AUTH_ERROR, 
   UNAUTH_USER
@@ -17,6 +18,22 @@ import {
 //     console.log('user info', res.data);
 // 	// dispatch({ type: FETCH_USER, payload: res.data });
 // };
+
+// Fetches user data
+export function fetchUser() {
+    return function(dispatch) {
+        axios.get('/', {
+            headers: { authorization: localStorage.getItem('token') }
+        })
+        .then(response => {
+            console.log(response.data.user);
+            // dispatch({
+            //     type: FETCH_USER,
+            //     payload: response.data.user
+            // });
+        });
+    }
+}
 
 // Fetches categories
 export const fetchCategories = () => async dispatch => {
@@ -36,50 +53,46 @@ export const fetchBrands = () => async dispatch => {
     dispatch({ type: FETCH_BRANDS, payload: res.data.brands});
 };
 
-// Action Creator to Login User: 
-export function signinUser({ email, password }) {
-    return function (dispatch) {
-        // submit email/password to the server
-        axios.post('/api/signin', { email, password })
-            .then( response => {
-                dispatch({ type: AUTH_USER });
-                // Save the JWT token
-                localStorage.setItem('token', response.data.token);
-                Redirect('/shop-all');
-            })
-            .catch( () => {
-                dispatch(authError('BAD LOGIN INFO'));
-            });
-    };
+// Action creator for Signin user
+export const signinUser = user => async dispatch => {
+    const res = await axios.post('/api/signin', {
+        email: user.email,
+        password: user.password
+    });
+
+    dispatch({ type: AUTH_USER });
+    localStorage.setItem('token', res.data.token);
 }
 
-//  Action Creators for Local User:
-export function signupUser({ fname, lname, email, password, dob, city, country }) {
-    return function (dispatch) {
-        axios.post('/api/signup', { fname, lname, email, password, dob, city, country })
-            .then(response => {
-                dispatch({ type: AUTH_USER });
-                localStorage.setItem('token', response.data.token);
-                Redirect('/');
-            })
-            .catch (response => dispatch(authError("COULD NOT SIGNUP")));
-    };
+// Action creator for Signup user
+export const signupUser = user => async dispatch => {
+    const res = await axios.post('/api/signup', {
+        fname: user.fname,
+        lname: user.lname,
+        email: user.email,
+        password: user.password,
+        city: user.city,
+        country: user.country
+    });
+
+    dispatch({ type: AUTH_USER });
+    localStorage.setItem('token', res.data.token);
 }
 
 // Action Creator to Logout User:
-export function signoutUser () {
+export function signoutUser() {
     localStorage.removeItem('token');
-    console.log("LOGGED OUT ")
-    return { type: UNAUTH_USER};
+    console.log("LOGGED OUT")
+    return { type: UNAUTH_USER };
 }
 
-// AUTH ERROR:
-export function authError(error) {
-    return {
-        type: AUTH_ERROR,
-        payload: error
-    };
-}
+// // AUTH ERROR:
+// export function authError(error) {
+//     return {
+//         type: AUTH_ERROR,
+//         payload: error
+//     };
+// }
 
 // Fetches products
 export const fetchProducts = () => async dispatch => {

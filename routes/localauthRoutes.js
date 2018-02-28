@@ -11,8 +11,8 @@ module.exports = (app) => {
 // Local Login/Signup:
   app.post('/api/signin', requireSignin, Auth.signin);
   app.post('/api/signup', Auth.signup);
-  app.get('/api/logout', (req, res) => {
-    req.logout();
-    res.redirect('/');
-    });
+  // app.get('/api/logout', (req, res) => {
+  //   req.logout();
+  //   res.redirect('/');
+  //   });
 };

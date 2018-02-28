@@ -25,9 +25,9 @@ class Sale extends Component {
     renderBrands() {
         return this.props.brands.map((brand) => {
             return (
-                <span>
+                <span key={brand._id}>
                     <input type="checkbox"/>
-                    <label key={brand._id}>{brand.name}</label><br/>
+                    <label>{brand.name}</label><br/>
                 </span>
             );
         });
