@@ -12,27 +12,14 @@ import {
   UNAUTH_USER
 } from './types';
 
-// // Fetches user data
-// export const fetchUser = () => async dispatch => {
-//     const res = await axios.get('/api/current_user');
-//     console.log('user info', res.data);
-// 	// dispatch({ type: FETCH_USER, payload: res.data });
-// };
-
 // Fetches user data
-export function fetchUser() {
-    return function(dispatch) {
-        axios.get('/', {
-            headers: { authorization: localStorage.getItem('token') }
-        })
-        .then(response => {
-            console.log(response.data.user);
-            // dispatch({
-            //     type: FETCH_USER,
-            //     payload: response.data.user
-            // });
-        });
-    }
+export const fetchUser = () => async dispatch => {
+    const res = await axios.post('/api/current_user', {
+        token: localStorage.getItem('token')
+    });
+
+    console.log(res.data.user);
+
 }
 
 // Fetches categories
@@ -53,12 +40,24 @@ export const fetchBrands = () => async dispatch => {
     dispatch({ type: FETCH_BRANDS, payload: res.data.brands});
 };
 
+// Fetches products
+export const fetchProducts = () => async dispatch => {
+    const res = await axios.get('/api/products/all');
+    dispatch({ type: FETCH_PRODUCTS, payload: res.data.products });
+}
+
 // Action creator for Signin user
 export const signinUser = user => async dispatch => {
     const res = await axios.post('/api/signin', {
         email: user.email,
         password: user.password
     });
+
+    // const res1 = await axios.get('/api/current_user', {
+    //     user: res.data.user
+    // })
+
+    // console.log('USER DATA (DELETE LATER)', res1.data );
 
     dispatch({ type: AUTH_USER });
     localStorage.setItem('token', res.data.token);
@@ -95,20 +94,21 @@ export function signoutUser() {
 // }
 
 // Fetches products
-export const fetchProducts = () => async dispatch => {
-    const res = await axios.get('/api/products/all');
-    dispatch({ type: FETCH_PRODUCTS, payload: res.data.products});
+export const fetchCartProducts = () => async dispatch => {
+    const res = await axios.get('/api/shoppingcart/all');
+    // dispatch({ type: FETCH_PRODUCTS, payload: res.data.products });
 };
 
 // Submit product to shopping cart
-export const submitProduct = product => async (dispatch, getState) => {
-    const user = getState().auth.id;
-    console.log('user info:', user);
+// export const submitCartProduct = product => async (dispatch, getState) => {
+export const submitCartProduct = product => async (dispatch) => {
+    // const user = getState().auth.id;
+    // console.log('user info:', user);
     console.log('product id', product._id);
 
 	const res = await axios.post('/api/shoppingcart/add', {
         ...product,
-        _user: user
+        // _user: user
 	});
 
     console.log('submitted product to shopping cart successfully');

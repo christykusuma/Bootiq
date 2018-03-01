@@ -11,7 +11,6 @@ function tokenForUser(user) {
   const timestamp = new Date().getTime();
   return jwt.encode({ 
       sub: user.id,
-      name: user.name,
       admin: user.admin
   }, config.secret);
 }
@@ -21,17 +20,21 @@ const jwtOptions = {
     secretOrKey: config.secret
 };
 
-//GOOGLE LOGIN
+// Google login
 module.exports = (app) => {
+
+  // Authentication
   app.get('/auth/google', passport.authenticate('google', {
     scope: ['profile', 'email']
   }));
 
+  // Logout
   app.get('/api/logout', (req, res) => {
     req.logout();
     res.redirect('/');
   });
 
+  // Callback for login
   app.get(
       '/auth/google/callback',
       passport.authenticate('google', {

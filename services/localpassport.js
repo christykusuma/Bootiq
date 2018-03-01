@@ -8,7 +8,7 @@ const keys = require('../config/keys');
 const User = require('../models/User');
 
 // Create local strategy:
-const localOptions = { usernameField: 'email'}
+const localOptions = { usernameField: 'email' }
 const localLogin = new LocalStrategy( localOptions, function(email, password, done){
     User.findOne({'local.email': email}, function(err, user){
         // if there is an error when tryig to log in

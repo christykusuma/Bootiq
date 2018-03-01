@@ -2,9 +2,7 @@ const Brand = require('../models/Brand');
 
 module.exports = (app) => {
 
-//----- RETRIEVE ALL BRANDS FROM DATABASE --------//
-
-  //Grabs all of our brand information
+  // Fetches all brands
   app.get('/api/brands/all', (req,res) => {
     Brand.find((error, brands) => {
       if(error){
@@ -18,28 +16,24 @@ module.exports = (app) => {
     });
   });
 
+  // Adding brand to database
+  app.post('/api/admin/brands/add', (req,res) => {
 
-//----- POST BRANDS TO  DATABASE --------//
+    // Create a an instance of our Brand model to add new Brands to DB
+    const brand = new Brand();
+    brand.name = req.body.name;
+    brand.image = req.body.image;
+    brand.description = req.body.description;
 
-app.post('/api/admin/brands/add', (req,res) => {
-
-  // Create a an instance of our Brand model to add new Brands to DB
-
-  const brand = new Brand();
-
-  brand.name = req.body.name;
-  brand.image = req.body.image;
-  brand.description = req.body.description;
-
-  brand.save((error, brandSaved) => {
-    if(error){
-      res.send(error);
-      console.log("error saving your brand to the database");
-    }
-    res.json({
-      message: "Successfully saved brand to database",
-      brandSaved: brandSaved
+    brand.save((error, brandSaved) => {
+      if(error){
+        res.send(error);
+        console.log("error saving your brand to the database");
+      }
+      res.json({
+        message: "Successfully saved brand to database",
+        brandSaved: brandSaved
+      });
     });
   });
-});
 };

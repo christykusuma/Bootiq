@@ -2,8 +2,7 @@ const Product = require('../models/Product');
 
 module.exports = (app) => {
 
-//----- RETRIEVE ALL PRODUCTS FROM DATABASE --------//
-
+  // Fetches all products from the database
   app.get('/api/products/all', (req,res) => {
 
     //Grab our product model to retrieve all products
@@ -20,14 +19,11 @@ module.exports = (app) => {
     });
   });
 
-
-  //----- POST PRODUCTS TO DATABASE --------//
-
+  // Adding a product to database
   app.post('/api/admin/products/add', (req,res) => {
 
-    //Create a new instance of our Package model
+    //Create a new instance of our product model
     const product = new Product();
-
     product.name = req.body.name;
     product.price = req.body.price;
 

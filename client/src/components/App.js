@@ -17,9 +17,10 @@ import Cart from './Cart';
 
 // Holds all the other components
 class App extends Component {
-	// componentDidMount() {
-  //   this.props.fetchUser();
-	// }
+	componentDidMount() {
+    this.props.fetchUser();
+  }
+  
 	render () {
 		return ( 
 			<BrowserRouter>

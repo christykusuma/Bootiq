@@ -8,17 +8,33 @@ function tokenForUser(user) {
     const timestamp = new Date().getTime();
     return jwt.encode({ 
         sub: user.id,
-        name: user.name,
         admin: user.admin
     }, config.secret);
 }
 
+// Handles fetching user data
+exports.fetchuser = function (req, res, next) {
+    const token = req.body.token;
+    const secret = config.secret;
+    const decoded = jwt.decode(token, secret);
+
+    const user_id = decoded.sub;
+
+    User.findById(user_id, (err, user) => {
+        res.send({
+          user: user
+        });
+      })
+}
+
+// Handles user signin
 exports.signin = function (req, res, next) {
-    console.log('User token is', tokenForUser(req.user));
     res.send( { 
-        token: tokenForUser(req.user) });
+        token: tokenForUser(req.user)
+    });
 };
 
+// Handles user signup
 exports.signup = function (req, res, next) {
     const fname = req.body.fname;
     const lname = req.body.lname;
@@ -28,9 +44,11 @@ exports.signup = function (req, res, next) {
     const city = req.body.city;
     const country = req.body.country;
     const admin = false;
+
     if (!email || !password) {
         return res.status(422).send({error: 'You must provide email and password'});
     }
+
     // See if a user with a give email exists
     User.findOne({ 'local.email': email }, function(err,existingUser) {
         if (err) { 
@@ -40,6 +58,7 @@ exports.signup = function (req, res, next) {
             return res.status(422).send({ error: "Email is in use" });
         }
     });
+
     // If user with email does exist, return an error
     const user = new User({
         method: 'local',
@@ -50,10 +69,11 @@ exports.signup = function (req, res, next) {
             password: password,
             // dob: dob,
             city: city,
-            country: country,
-            admin: admin
-        }
+            country: country
+        },
+        admin: admin
     });
+    
     // If a user with Email does NOT exist  create and save user record
     user.save( function(err) {
         if (err) { return next(err); }

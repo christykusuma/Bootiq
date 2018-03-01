@@ -30,14 +30,14 @@ const userSchema = new Schema({
         fname: String,
         lname: String
     },
-    _cart: [{
+    _carts: [{
         type: Schema.Types.ObjectId,
-        ref: 'product'
+        ref: 'cart'
     }],
-    _wishlist: [{
-        type: Schema.Types.ObjectId,
-        ref: 'product'
-    }],
+    // wishlists: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'wishlist'
+    // }],
     admin: Boolean
 });
 
@@ -73,4 +73,4 @@ userSchema.methods.comparePassword = function (candidatePassword, callback) {
     });
 };
 
-module.exports = mongoose.model('users', userSchema);
+module.exports = mongoose.model('user', userSchema);

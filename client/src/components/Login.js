@@ -59,10 +59,6 @@ class Login extends Component {
         }
 };
 
-
-
-
-
 Login = reduxForm({
     form: "login",
     fields:  ['email', 'password']
