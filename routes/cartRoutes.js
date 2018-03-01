@@ -9,13 +9,29 @@ module.exports = (app) => {
 
     // Adding a product to shopping cart
     app.post('/api/shoppingcart/add', (req,res) => {
-        // const user = User.findById({ req.user.id });
-        // const cart = new Cart( 
-        //     _product: Product.findById({ req.body._id }),
-        //     quantity: 2 
-        // );
 
-        // user._carts.push(cart);
+        console.log('read me too', req.body._id);
+        // User.findById( req.body.user, (err, user) => {
+            
+        // });
+        // const product = await Product.findById({ req.body._id });
+
+        const cart = new Cart( 
+            _product: undefined,
+            quantity: 2 
+        );
+
+        cart.save()
+            .then(() => User.findById( req.body.user ))
+            .then((user) => {
+                user._carts.push(cart);
+                return user.save();
+            })
+            .then(() => Product.findById({ req.body._id }))
+            .then((product) => {
+                cart._product.push(product);
+                return cart.save();
+            });
 
         // Promise.all([user.save(), cart.save()])
         //     .then((error, cartSaved) => {
@@ -30,27 +46,6 @@ module.exports = (app) => {
         //         });
         // })
     });
-
-
-        // const cart = new Cart({
-        //     // _product: req.body._id,
-        //     // _user: req.user.id
-        //     _product: mongoose.Types.ObjectId('5a8cc6c21728023cb8628c40'),
-        //     _user: mongoose.Types.ObjectId('5a94febf7f4b4c19fb18ab1d'),
-        //     name: 'name'
-        // });
-    
-        // cart.save((error, cartSaved) => {
-        //     if(error){
-        //         res.send(error);
-        //         console.log("error saving your cart to the database");
-        //     } 
-        
-        //     res.json({
-        //         message: "Successfully saved cart to database",
-        //         cartSaved: cartSaved
-        //     });
-        // })
 
         // Finding user id and pushing product into shopping cart
         // User.findById({ req.user.id })

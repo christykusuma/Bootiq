@@ -34,6 +34,7 @@ class Sale extends Component {
     }
     
     render () {
+        console.log('HELLOW', this.props.auth);
         return ( 
             <div className="shop-all">
                 <div className="filter">
@@ -76,7 +77,8 @@ class Sale extends Component {
 
 function mapStateToProps(state) {
 	return { 
-        brands: state.brands
+        brands: state.brands,
+        auth: state.auth
     };
 }
 

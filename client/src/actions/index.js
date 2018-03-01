@@ -18,7 +18,9 @@ export const fetchUser = () => async dispatch => {
         token: localStorage.getItem('token')
     });
 
-    console.log(res.data.user);
+    console.log('fetched user', res.data.user);
+
+    dispatch({ type: FETCH_USER, payload: res.data.user});
 
 }
 
@@ -52,12 +54,6 @@ export const signinUser = user => async dispatch => {
         email: user.email,
         password: user.password
     });
-
-    // const res1 = await axios.get('/api/current_user', {
-    //     user: res.data.user
-    // })
-
-    // console.log('USER DATA (DELETE LATER)', res1.data );
 
     dispatch({ type: AUTH_USER });
     localStorage.setItem('token', res.data.token);
@@ -101,14 +97,15 @@ export const fetchCartProducts = () => async dispatch => {
 
 // Submit product to shopping cart
 // export const submitCartProduct = product => async (dispatch, getState) => {
-export const submitCartProduct = product => async (dispatch) => {
+export const submitCartProduct = (product, user) => async (dispatch) => {
     // const user = getState().auth.id;
     // console.log('user info:', user);
     console.log('product id', product._id);
+    console.log('user id', user._id);
 
 	const res = await axios.post('/api/shoppingcart/add', {
         ...product,
-        // _user: user
+        user: user._id
 	});
 
     console.log('submitted product to shopping cart successfully');
