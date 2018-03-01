@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 import {
     submitCartProduct,
-    fetchProducts
+    fetchProducts,
+    fetchUser
 } from "../actions/index";
 
 import { bindActionCreators } from 'redux';
@@ -16,9 +17,12 @@ class ProductList extends Component {
 
     componentDidMount() {
         this.props.fetchProducts();
+        this.props.fetchUser();
     }
 
     renderProducts() {
+        console.log('BLUE', this.props.user);
+        const user = this.props.user;
         return this.props.products.map((product) => {
             return (
                 <div className="product" key={product._id}>
@@ -29,7 +33,7 @@ class ProductList extends Component {
                         Rosso Asiago<br/>
                         {product.price}
                     </div>
-                    <button className="product-add" onClick={() => this.props.submitProduct(product)}>
+                    <button className="product-add" onClick={() => this.props.submitCartProduct(product, user)}>
                         Add to cart
                     </button>
                 </div>
@@ -48,14 +52,16 @@ class ProductList extends Component {
 
 function mapStateToProps(state) {
     return {
-        products: state.products
+        products: state.products,
+        user: state.user
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         submitCartProduct,
-        fetchProducts
+        fetchProducts,
+        fetchUser
     }, dispatch);
 }
 
