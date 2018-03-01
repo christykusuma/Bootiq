@@ -36,7 +36,7 @@ class SignUp extends Component {
     }
 
     render () {
-        const { handleSubmit, fields: {fname, lname, email, password, dob, city, country }} = this.props;
+        const { handleSubmit, fields: {fname, lname, email, password, city, country }} = this.props;
         return (
                 <div className="register">
                     <img className="signup-pic" src="register.jpg"/>
@@ -110,7 +110,7 @@ class SignUp extends Component {
 
 SignUp = reduxForm ({
     form: "Signup",
-    fields: [ 'fname', 'lname', 'password', 'dob', 'city', 'country']
+    fields: [ 'fname', 'lname', 'password', 'city', 'country']
 }) (SignUp);
 
 export default connect(null, actions)(SignUp);

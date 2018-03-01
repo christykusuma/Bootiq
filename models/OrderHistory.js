@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const orderHistorySchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
     },
     product: {
         type: Schema.Types.ObjectId,

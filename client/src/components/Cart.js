@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class Cart extends Component {
+    componentDidMount() {
+        this.props.fetchCartProducts();
+    }
+
     render() {
         const { fields: { quantity }} = this.props;
         return (

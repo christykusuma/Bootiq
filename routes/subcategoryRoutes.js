@@ -2,9 +2,7 @@ const Subcategory = require('../models/Subcategory');
 
 module.exports = (app) => {
 
-//----- RETRIEVE ALL SUBCATEGORIES FROM DATABASE --------//
-
-  // Grabs all of our category information
+  // Fetches all of our subcategories
   app.get('/api/subcategories/all', (req,res) => {
     Subcategory.find((error, subcategories) => {
       if(error){
@@ -19,15 +17,11 @@ module.exports = (app) => {
     });
   });
 
-
-//----- POST SUBCATEGORIES TO  DATABASE --------//
-
+// Adding a subcategory to database
 app.post('/api/admin/subcategories/add', (req,res) => {
 
   // Create a an instance of our Subcategory model to add new Subcategory to DB
-
   const subcategory = new Subcategory();
-
   subcategory.name = req.body.name;
 
   subcategory.save((error, subcategorySaved) => {

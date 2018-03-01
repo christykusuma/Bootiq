@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import {
     fetchBrands,
     fetchCategories,
-    signoutUser,
-    fetchUser
+    signoutUser
 } from '../actions/index';
 
 import { bindActionCreators } from 'redux';
@@ -50,11 +49,11 @@ class Header extends Component {
 	// 		);
     //     }
     // }
+
     // Render appropriate header links (sign in/sign out)
 	renderContent() {
 		if (this.props.auth) {
-            // this.props.fetchUser();
-            console.log('hellow true or false:', this.props.auth);
+            console.log(this.props.auth);
 			return (
 				<div>
                     <a href="/" onClick={this.handleLogout}>Logout</a>
@@ -110,7 +109,7 @@ class Header extends Component {
                         </li>
                     </div>
                     <div className="header__logo">
-                        <a href="/"><img src="logo.png"/></a>
+                        <a href="/"><img src="logo.png" alt="pic"/></a>
                     </div>
                     <div className="header__bottom--nav">
                         <li>
@@ -156,7 +155,6 @@ function mapStateToProps(state) {
         auth: state.auth,
         brands: state.brands,
         categories: state.categories,
-        user: state.auth.user
     };
 }
 
@@ -165,7 +163,6 @@ function mapDispatchToProps(dispatch) {
         fetchBrands,
         fetchCategories,
         signoutUser,
-        fetchUser
     }, dispatch);
 }
 

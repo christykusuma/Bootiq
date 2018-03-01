@@ -1,9 +1,10 @@
+// Product list for sales page
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {
-    fetchProducts,
-    submitProduct
+    submitCartProduct,
+    fetchProducts
 } from "../actions/index";
 
 import { bindActionCreators } from 'redux';
@@ -53,8 +54,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        fetchProducts,
-        submitProduct
+        submitCartProduct,
+        fetchProducts
     }, dispatch);
 }
 
