@@ -16,6 +16,7 @@ module.exports = (app) => {
   app.post('/api/signin', requireSignin, Auth.signin);
   app.post('/api/signup', Auth.signup);
   app.post('/api/current_user', Auth.fetchuser);
+  app.post('/api/shoppingcart/all', Auth.fetchexistingusercartproducts);
   // app.get('/api/logout', (req, res) => {
   //   req.logout();
   //   res.redirect('/');

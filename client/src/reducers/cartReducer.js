@@ -3,10 +3,10 @@ import { FETCH_CART } from '../actions/types';
 export default function(state = [], action) {
     switch (action.type) {
         case FETCH_CART:
-            return action.payload.map(product => {
+            return action.payload.map(cart => {
                 return {
-                    product_id: product._id,
-                    user_id: user._id
+                    quantity: cart.quantity,
+                    _product: cart._product
                 }
             });
         default:

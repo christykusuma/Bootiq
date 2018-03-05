@@ -91,26 +91,33 @@ export function signoutUser() {
     return { type: UNAUTH_USER };
 }
 
-// Fetches products
-export const fetchCartProducts = () => async dispatch => {
-    const res = await axios.get('/api/shoppingcart/all');
-    // dispatch({ type: FETCH_PRODUCTS, payload: res.data.products });
+// Fetches products for logged in user
+export const fetchLocalCartProducts = () => async dispatch => {
+
+    // Sending back user token to access shopping cart
+    const res = await axios.post('/api/shoppingcart/all', {
+        token: localStorage.getItem('token')
+    });
+
+    console.log('fetched user cart', res.data.user._carts);
+
+    dispatch({type: FETCH_CART, payload: res.data.user._carts});
 };
 
 // Submit product to shopping cart
 // export const submitCartProduct = product => async (dispatch, getState) => {
-export const submitCartProduct = (product, user) => async (dispatch) => {
+export const submitCartProduct = (product, user, quantity) => async (dispatch) => {
     // const user = getState().auth.id;
     // console.log('user info:', user);
     console.log('product id', product._id);
     console.log('user id', user._id);
+    console.log('quantity', quantity);
 
 	const res = await axios.post('/api/shoppingcart/add', {
         ...product,
-        user: user._id
+        user: user._id,
+        quantity: quantity
 	});
 
-    console.log('submitted product to shopping cart successfully');
-
-    // dispatch({ type: FETCH_CART, payload: res.data });
+    console.log('submitted product to shopping cart successfully', res.data);
 } 

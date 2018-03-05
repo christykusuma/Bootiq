@@ -14,21 +14,36 @@ module.exports = (app) => {
 
         const cart = new Cart(); 
         cart._product = {};
-        cart.quantity = 2;
+        cart.quantity = req.body.quantity;
 
-        cart.save()
-            .then(() => User.findById( req.body.user ))
-            .then((user) => {
-                user._carts.push(cart);
-                return user.save();
-            });
-            
+        // Find the product
         Product.findById( req.body._id )
-            .then((product) => {
-                cart._product = product;
-                return cart.save();
-            });
+        // Insert product in new cart
+        .then((product) => {
+            console.log('PRODUCT READ ME', product);
+            cart._product = product;
+        })
+        // Save the cart
+        .then(() => cart.save())
+        // Find the user
+        .then(() => User.findById( req.body.user ))
+        // Push cart into user model
+        .then((user) => {
+            user._carts.push(cart);
+            return user.save();
+        });
     });  
+
+    // // Fetching all products from shopping cart
+    // app.post('/api/shoppingcart/all', (req,res) => {
+
+    //     const user = User.findById( req.body.user );
+
+    //     console.log('CHRISTY READ ME, USER INFO', user);
+        
+    //     // const user = 
+
+    // });
 
     // // Deleting a product from shopping cart
     // app.post('/api/shoppingcart/delete', (req,res) => {
@@ -52,15 +67,4 @@ module.exports = (app) => {
     //             );
     //     })      
     // });
-
-    // Fetching all products from shopping cart
-    app.get('/api/shoppingcart/all', (req,res) => {
-    //    const product_ids = Cart.find({ _user: mongoose.Types.ObjectId('5a94febf7f4b4c19fb18ab1d') });
-        // var id = mongoose.Types.ObjectId('5a975d397c10b859a361360c');    
-        // User.findById({ req.user.id })
-        // .then((user) => {
-        //     user.cart.push({ _product: })
-        // })
-
-    });
 }

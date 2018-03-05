@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { searchProduct, fetchUser } from '../actions/index';
+import { searchProduct, fetchUser, submitCartProduct } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 class Product extends Component {
@@ -16,44 +16,44 @@ class Product extends Component {
         this.props.searchProduct(this.props.match.params.id);
     }
 
-    // handleFormSubmit( { product, quantity } ) {
-    //     const user = this.props.user;
-    //     this.props.submitCartProduct({ user, product, quantity });   
-    // }
+    handleFormSubmit({ quantity }) {
+        const user = this.props.user;
+        const product = this.props.search;
+        this.props.submitCartProduct( product, user, quantity );   
+    }
     
     render() { 
-        // const { handleSubmit, fields: { product, quantity }} = this.props;
+        const { handleSubmit, fields: { quantity }} = this.props;
         return (
             <div className="product">
                 <div className="product__photos">
                     <img src="product-1.jpg" alt="product-img"/>
                 </div>
-                {/* <form className="product__details" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}> */}
-                <div>
+                <form className="product__details" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                    <span className="product__details--brand">{this.props.search.brand}</span>
                    {this.props.search.name}<br/>
                    COLOR: {this.props.search.color}<br/>
                    Rp. {this.props.search.price}<br/>
                     <div className="product__add">
                         <div className="product__add--quantity">
-                            {/* <Field name="quantity" component="select">
+                            <Field name="quantity" component="select">
                                 <option value="1">1</option>
-                                <option value="1">2</option>
-                                <option value="1">3</option>
-                                <option value="1">4</option>
-                                <option value="1">5</option>
-                                <option value="1">6</option>
-                                <option value="1">7</option>
-                                <option value="1">8</option>
-                                <option value="1">9</option>
-                                <option value="1">10</option>
-                            </Field> */}
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </Field>
                         </div>
                         <button type="submit" className="product__add--basket">
                            Add to bag
                         </button>
                     </div>
-                </div>
+                </form>
             </div>
         );
     }
@@ -69,16 +69,14 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         searchProduct,
-        fetchUser
+        fetchUser,
+        submitCartProduct
     }, dispatch);
 }
     
-// export default connect(mapStateToProps, mapDispatchToProps)(Product);
-
-// Product = reduxForm({
-//     form: "product",
-//     fields:  ['product', 'quantity']
-// }) (Product);
-
+Product = reduxForm({
+    form: "product",
+    fields:  ['quantity']
+}) (Product);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product);

@@ -37,7 +37,7 @@ class ProductList extends Component {
                         Add to cart
                     </button> */}
                     <button className="product-add">
-                        <a href={`${product._id}`}>SEARCH</a>
+                        <a href={`products/${product._id}`}>SEARCH</a>
                     </button>
                 </div>
             );
