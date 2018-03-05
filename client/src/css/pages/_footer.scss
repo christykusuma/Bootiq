@@ -1,0 +1,128 @@
+.footer {
+    height: 100%;
+    position: relative;
+    padding: 0;
+    background-color: $primary-darkcolor;
+    font-family: $primary-font;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    &__links {
+        display: flex;
+        padding: 20px;
+        .information, .brands, .contact {
+            padding: 20px;
+            display: inline-block;
+            width: 300px;
+            h3 {
+                font-size: 1.2rem;
+                padding: 5px;
+            }
+            li {
+                font-size: 0.9rem;
+                list-style-type: none;
+                color: black;
+                padding: 5px;
+            }
+            a {
+                color: black;
+            }
+        }
+        .contact {
+            width: 350px;
+        }
+    }
+    .chatbox {
+        width: 360px;
+        height: 300px;
+        position: absolute;
+        bottom: 30px;
+        right: 20px;
+        border: solid 4px black;
+        color: black;
+        text-align: center;
+        border-radius: 20px;
+        background-color: $secondary-darkcolor;
+        font-family: $primary-font;
+        letter-spacing: 4px;
+        h3 {
+            font-size: 1.3rem;
+            background-color: black;
+            padding: 10px;
+            color: $secondary-lightcolor;
+        }
+
+    }
+    &__subscribe {
+        background-color: $secondary-lightcolor;
+        color: black;
+        text-align: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        width: 100%;
+        &--newsletter {
+            width: 580px;
+            display: inline-block;
+            border-right: solid 4px $primary-color;
+            margin-left: -20px;
+            label {
+                font-size: 1.4rem;
+                font-weight: bold;
+                padding: 10px;
+            }
+            input {
+                width: 400px;
+                height: 40px;
+                padding: 10px;
+            }
+            button {
+                width: 40px;
+                height: 40px;
+                background-color: $secondary-darkcolor;
+                font-size: 1rem;
+            }
+            button:hover {
+                background-color: $tertiary-color;
+                color: $secondary-darkcolor;
+            }
+        }
+        &--social {
+            width: 250px; 
+            display: inline-block;
+            h3 {
+                font-size: 1.3rem;
+                font-weight: bold;
+            }
+        }
+        .fa {
+            padding: 20px;
+            font-size: 30px;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+            margin: 5px;
+          }
+          
+          .fa:hover {
+              background: $secondary-darkcolor;
+              color: $tertiary-color;
+          }
+        .fa-instagram, .fa-facebook {
+            background: $tertiary-color;
+            color: $secondary-darkcolor;
+        }
+    }
+    &__copyright {
+        font-family: $secondary-font;
+        background-color: black;
+        color: white;
+        text-transform: uppercase;
+        padding: 10px 20px;
+        letter-spacing: 5px;
+        font-size: 0.6rem;
+        text-align: center;
+    }
+}

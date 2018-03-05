@@ -1,0 +1,228 @@
+// Landing page
+.landing {
+    &__ads {
+        padding: 5px 20px;
+        // border: solid 4px $tertiary-color;
+        // background-color: $tertiary-color;
+        img {
+            width: 97vw;
+            height: 400px;
+            max-width: 1180px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    // #slideshow {
+    //     overflow: hidden;
+    //     height: 510px;
+    //     width: 1180px;
+    //     margin: 0 auto;
+    //   }
+      
+    //   .slide-wrapper {
+    //     width: 2912px;
+    //     -webkit-animation: slide 50s ease infinite;
+    //     padding: 5px 20px;
+    //     margin-bottom: 40px;
+    //   }
+      
+    //   .slide {
+    //     float: left;
+    //     width: 97vw;
+    //     height: 400px;
+    //     max-width: 1180px;
+    //   }
+      
+    //   @-webkit-keyframes slide {
+    //     // 20% {margin-left: 0px;}
+    //     // 30% {margin-left: -728px;}
+    //     // 50% {margin-left: -728px;}
+    //     // 60% {margin-left: -1456px;}
+    //     // 70% {margin-left: -1456px;}
+    //     // 80% {margin-left: -2184px;}
+    //     50% {margin-left: -1200px;}
+    //     90% {margin-left: -1200px;}
+    //   }
+
+
+    &__just-arrived {
+        margin-bottom: 20px;
+    }
+    &__just-arrived, &__bestsellers {
+        padding-top: 40px;
+        padding-bottom: 20px;
+        background-color: #eff3f5;
+        h3 {
+            text-align: center;
+            font-family: $primary-font;
+            font-size: 2.3rem;
+            letter-spacing: 2px;
+            padding-bottom: 20px;
+            border-bottom: #3d8ab9 solid 5px;
+            width: 40%;
+            margin: auto auto;
+        }
+        &--products {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+            height: 330px;
+            width: 98vw;
+            margin: 10px 20px;
+            margin-left: 0;
+            background-color: #eff3f5; 
+            overflow: hidden;
+            position: relative;
+            img {
+                width: 180px;
+                height: 180px;
+            }
+            .product {
+                display: inline-block;
+                padding: 10px;
+                height: 100%;
+                width: 200px;
+                &-description {
+                    display: inline-block;
+                    background-color: #c9d6de;
+                    width: 100%;
+                    height: 125px;
+                    font-size: 0.9rem;
+                    padding: 5px;
+                    border-top: solid 4px $primary-color;
+                }
+                &-brand {
+                    font-weight: bold;
+                    font-size: 1.1rem;
+                    letter-spacing: 2px;
+                    font-family: $tertiary-font;
+                }
+            }
+            /* Next & previous buttons */
+            .prev, .next {
+                cursor: pointer;
+                position: absolute;
+                top: 40%;
+                color: black;
+                font-weight: bold;
+                font-size: 30px;
+                transition: 0.6s ease;
+            }
+            
+            /* Position the "next button" to the right */
+            .next {
+                right: 25px;
+            }
+            .prev {
+                left: 25px;
+            }
+            
+            /* On hover, change color */
+            .prev:hover, .next:hover {
+                color: $primary-color !important;
+            }
+        }
+    }
+    &__brands {
+        text-align: center;
+        padding: 20px;
+        padding-left: 60px;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        width: 1400px;
+        &--name {
+            margin: 0.2% 1.5%;
+            width: 20%;
+            height: 250px;
+            display: inline-block;
+            background-color: white;
+            img {
+                width: 100%;
+                height: 200px;
+            }
+        }
+        &--title {
+            background-color: black;
+            color: white;
+            font-family: $secondary-font;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 20px;
+        }
+    }
+    &__blog {
+        margin: 0;
+        position: relative;
+        background-color: $secondary-darkcolor;
+        display: flex;
+        justify-content: center;
+        padding-top: 25px;
+        padding-bottom: 25px; 
+        width: 100vw;
+        font-family: $primary-font;
+        border-top: solid 4px #a6b6bd;
+        border-bottom: solid 4px #a6b6bd;
+        &--pic {
+            display: inline-block;
+            width: 420px;
+            height: 100%;
+            img {
+                padding-top: 0;
+                width: 50%;
+                height: 100%;
+                display: inline-block;
+            }
+        }
+        &--read {
+            display: inline-block;
+            width: 50%;
+            min-height: 400px;
+            background-color: $secondary-lightcolor;
+            padding: 50px 45px;
+            position: relative;
+            h3 {
+                font-size: 2rem;
+                font-weight: bold;
+                margin: 20px auto;
+                margin-left: 0;
+                border-bottom: 4px solid $primary-color;
+                width: 260px;
+                padding-bottom: 10px;
+            }
+            p {
+                padding: auto 10px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+            button {
+                background-color: $secondary-darkcolor;
+                width: 200px;
+                height: 40px;
+                color: black;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.search-bar {
+    display: inline-block;
+    margin-left: 60px;
+    input {
+        font-family: $secondary-font;
+        border: none;
+        border-bottom: solid $primary-color 3px;
+        width: 250px;
+        font-size: 1rem;
+        padding: 10px 2px;
+    }
+    i {
+        font-size: 1.2rem;
+    }
+}

@@ -19,12 +19,21 @@ module.exports = (app) => {
     });
   });
 
+  // Fetch single product from the database
+  app.get('/api/products/:id', async (req, res) => {
+    const product = await Product.findById( req.params.id );
+
+    res.send(product);    
+  })
+
   // Adding a product to database
   app.post('/api/admin/products/add', (req,res) => {
 
     //Create a new instance of our product model
     const product = new Product();
+    product.brand = req.body.brand;
     product.name = req.body.name;
+    product.color = req.body.color;
     product.price = req.body.price;
 
     product.save((error, productSaved) => {

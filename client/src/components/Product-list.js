@@ -28,13 +28,16 @@ class ProductList extends Component {
                 <div className="product" key={product._id}>
                     <img src="product-1.jpg" alt="product-img"/>
                     <div className="product-description">
-                        <span className="product-brand">Make Up Store</span><br/>
+                        <span className="product-brand">{product.brand}</span><br/>
                         {product.name}<br/>
-                        Rosso Asiago<br/>
+                        {product.color}<br/>
                         {product.price}
                     </div>
-                    <button className="product-add" onClick={() => this.props.submitCartProduct(product, user)}>
+                    {/* <button className="product-add" onClick={() => this.props.submitCartProduct(product, user)}>
                         Add to cart
+                    </button> */}
+                    <button className="product-add">
+                        <a href={`${product._id}`}>SEARCH</a>
                     </button>
                 </div>
             );

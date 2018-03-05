@@ -9,7 +9,8 @@ import {
   FETCH_USER,
   AUTH_USER, 
   AUTH_ERROR, 
-  UNAUTH_USER
+  UNAUTH_USER,
+  SEARCH_PRODUCT
 } from './types';
 
 // Fetches user data
@@ -48,6 +49,15 @@ export const fetchProducts = () => async dispatch => {
     dispatch({ type: FETCH_PRODUCTS, payload: res.data.products });
 }
 
+// Fetch single product for product page
+export const searchProduct = params_id => async dispatch => {
+    console.log('fetch product info for product page', params_id);
+
+    const res = await axios.get(`/api/products/${params_id}`);
+
+    dispatch({ type: SEARCH_PRODUCT, payload: res.data });
+}
+
 // Action creator for Signin user
 export const signinUser = user => async dispatch => {
     const res = await axios.post('/api/signin', {
@@ -80,14 +90,6 @@ export function signoutUser() {
     console.log("LOGGED OUT")
     return { type: UNAUTH_USER };
 }
-
-// // AUTH ERROR:
-// export function authError(error) {
-//     return {
-//         type: AUTH_ERROR,
-//         payload: error
-//     };
-// }
 
 // Fetches products
 export const fetchCartProducts = () => async dispatch => {
