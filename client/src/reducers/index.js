@@ -14,6 +14,6 @@ export default combineReducers({
     brands: brandReducer,
     categories: categoryReducer,
     products: productReducer,
-    user: userReducer
+    user: userReducer,
     // cart: cartReducer
 });

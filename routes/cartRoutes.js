@@ -14,7 +14,7 @@ module.exports = (app) => {
 
         const cart = new Cart(); 
         cart._product = {};
-        cart.quantity = 2;
+        cart.quantity = req.body.quantity;
 
         cart.save()
             .then(() => User.findById( req.body.user ))
@@ -25,6 +25,7 @@ module.exports = (app) => {
             
         Product.findById( req.body._id )
             .then((product) => {
+                console.log('PRODUCT READ ME', product);
                 cart._product = product;
                 return cart.save();
             });

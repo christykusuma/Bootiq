@@ -99,18 +99,18 @@ export const fetchCartProducts = () => async dispatch => {
 
 // Submit product to shopping cart
 // export const submitCartProduct = product => async (dispatch, getState) => {
-export const submitCartProduct = (product, user) => async (dispatch) => {
+export const submitCartProduct = (product, user, quantity) => async (dispatch) => {
     // const user = getState().auth.id;
     // console.log('user info:', user);
     console.log('product id', product._id);
     console.log('user id', user._id);
+    console.log('quantity', quantity);
 
 	const res = await axios.post('/api/shoppingcart/add', {
         ...product,
-        user: user._id
+        user: user._id,
+        quantity: quantity
 	});
 
-    console.log('submitted product to shopping cart successfully');
-
-    // dispatch({ type: FETCH_CART, payload: res.data });
+    console.log('submitted product to shopping cart successfully', res.data);
 } 
