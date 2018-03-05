@@ -27,6 +27,35 @@ exports.fetchuser = function (req, res, next) {
       })
 }
 
+// Handles fetching shopping cart of existing user
+exports.fetchexistingusercartproducts = function (req, res, next) {
+    const token = req.body.token;
+    const secret = config.secret;
+    const decoded = jwt.decode(token, secret);
+
+    const user_id = decoded.sub;
+
+    // User.findById(user_id, (err, user) => {
+    //     res.send({
+    //       user: user
+    //     });
+    //   })
+
+    User.findById(user_id)
+    .populate({
+        path: '_carts',
+        populate: {
+            path: '_product',
+            model: 'product'
+        }
+    })
+    .then((user) => {
+        res.send({
+          user: user
+        });       
+    })
+}
+
 // Handles user signin
 exports.signin = function (req, res, next) {
     res.send( { 

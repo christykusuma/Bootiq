@@ -91,10 +91,17 @@ export function signoutUser() {
     return { type: UNAUTH_USER };
 }
 
-// Fetches products
-export const fetchCartProducts = () => async dispatch => {
-    const res = await axios.get('/api/shoppingcart/all');
-    // dispatch({ type: FETCH_PRODUCTS, payload: res.data.products });
+// Fetches products for logged in user
+export const fetchLocalCartProducts = () => async dispatch => {
+
+    // Sending back user token to access shopping cart
+    const res = await axios.post('/api/shoppingcart/all', {
+        token: localStorage.getItem('token')
+    });
+
+    console.log('fetched user cart', res.data.user._carts);
+
+    dispatch({type: FETCH_CART, payload: res.data.user._carts});
 };
 
 // Submit product to shopping cart
