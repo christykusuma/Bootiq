@@ -1,0 +1,94 @@
+.cart {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: $secondary-darkcolor;
+    height: 100%;    
+    &__basket {
+        background-color: $secondary-lightcolor;
+        padding: 20px;
+        width: 700px;
+        height: 100%;
+        h3 {
+            padding: 10px 0px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.5rem;
+        }
+        a {
+            color: $primary-originalcolor;
+            font-weight: bold;
+        }
+        &--items {
+            margin-bottom: 10px;
+        }
+        &--item {
+            height: 120px;
+            margin-bottom: 8px;
+            background-color: white;
+        }
+        &--item-delete {
+            text-transform: uppercase;
+        }
+        &--item-photo {
+            background-color: black;
+            height: 100px;
+            width: 100px;
+            display: inline-block;
+            margin: 10px;
+        }
+        &--item-details {
+            display: inline-block;
+            padding: 14px 15px;
+            vertical-align: top;
+            position: relative;
+        }
+        &--item-quantity {
+            display: inline-block;
+            position: absolute;
+            left: 300px;
+            top: 35px;
+        }
+        &--item-price {
+            display: inline-block;
+            position: absolute;
+            left: 400px;
+            top: 35px;
+        }
+    }
+    &__payment {
+        background-color: white;
+        padding: 25px;
+        width: 400px;
+        h4 {
+            padding: 10px;
+            color: $primary-color;
+            letter-spacing: 2px;
+        }
+        td {
+            padding: 7px 10px;
+            padding-right: 40px;
+        }
+        td:nth-child(2) {
+            font-weight: bold;
+        }
+        tr:last-child {
+            font-weight: bold;
+            border-top: $primary-color solid 3px;
+            font-size: 1.2rem;
+        }
+        button {
+            background-color: $primary-color;
+            color: white;
+            padding: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+    }
+}

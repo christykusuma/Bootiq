@@ -1,0 +1,43 @@
+// Product page
+.product {
+    font-family: $primary-font;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    &__photos {
+        width: 400px;
+        height: 800px;
+        text-align: center;
+        background-color: $secondary-lightcolor;
+        border-right: $primary-color 5px solid;
+        img {
+            width: 350px;
+            height: 350px;
+            margin: 20px;
+        }
+    }
+    &__details {
+        padding: 60px;
+        width: 800px;
+        height: 800px;
+        background-color: $secondary-darkcolor;
+        letter-spacing: 1px;
+        &--brand {
+            font-weight: bold;
+            display: block;
+            font-size: 1.4rem;
+        }
+    }
+    &__add {
+        &--quantity {
+            display: inline-block;
+        }
+        &--basket {
+            display: inline-block;
+            padding: 5px 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 5px;
+        }
+    }
+}

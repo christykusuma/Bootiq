@@ -1,0 +1,201 @@
+// Login page
+.register{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: $secondary-darkcolor;
+    .login {
+        font-family: $primary-font;
+        width: 100%;
+        position: relative;
+        width: 450px;
+        display: block;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: $secondary-lightcolor;
+        &-pic {
+            width: 480px;
+            height: 450px;
+        }
+        h3 {
+            text-transform: uppercase;
+            font-size: 2rem;
+            padding: 30px;
+            padding-top: 0;
+            text-align: center;
+            letter-spacing: 3px;
+            .current-register {
+                color: $primary-color;
+            }
+            a.other-register {
+                color: black;
+                text-decoration: none;
+                padding-bottom: 10px;
+            }
+            a:hover.other-register {
+                border-bottom: $primary-color solid 3px;
+            }
+        }
+        label {
+            text-transform: uppercase;
+            display: block;
+            padding-left: 30px;
+            padding-bottom: 10px;
+        }
+        input {
+            width: 400px;
+            height: 40px;
+            display: block;
+            margin: auto auto;
+            margin-bottom: 20px;
+        }
+        .remember-me {
+            margin-top: -20px;
+            display: flex;
+            align-items: center;
+            padding-left: 30px;
+            label, input {
+                display: inline;
+                vertical-align: center;
+                padding: 0;
+                margin: 0;
+                text-transform: capitalize;
+            }
+            label {
+                padding-left: 10px;
+            }
+            input {
+                width: 20px;
+                height: 60px;
+            }
+        }
+        button {
+            font-size: 1rem;
+            width: 120px;
+            height: 35px;
+            text-transform: uppercase;
+            margin: auto auto;
+            background-color: $secondary-darkcolor;
+            display: block;
+        }
+        a.forget-password {
+            color: $primary-color;
+            text-decoration: none;
+            display: block;
+            margin: auto auto;
+            text-align: center;
+        }
+    }
+    .signup {
+        font-family: $primary-font;
+        width: 100%;
+        position: relative;
+        width: 850px;
+        display: block;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: $secondary-lightcolor;
+        &-pic {
+            width: 930px;
+            height: 606px;
+            position: absolute;
+        }
+        form {
+            margin: auto auto;
+            width: 90%;
+            padding: 15px;
+            span {
+                display: inline-block;
+                margin-bottom: 10px;
+                width: 50%;
+            }
+            // span:nth-child(5) {
+            //     display: block;
+            //     input {
+            //         display: inline-block;
+            //         width: 600px;
+            //     }
+            //     button {
+            //         display: inline;
+            //         width: 100px;
+            //         height: 40px;
+            //     }
+            // }
+            // // Date picker
+            // div.rw-widget-container {
+            //     width: 700px;
+            // }
+            // div.rw-widget-picker {
+            //     background-color: transparent;
+            //     background-color: black;
+            // } 
+            // button#rw_1_date_calendar_label {
+            //     width: 71%;
+
+            // }
+            // div.rw-calendar-header {
+            //     text-align: center;
+            // }
+            // button.rw-calendar-btn-left.rw-btn.rw-btn-primary, button.rw-calendar-btn-right.rw-btn.rw-btn-primary {
+            //     width: 14.5%;
+            // }
+            // div.rw-calendar-footer {
+            //     width: 100%;
+            // }
+            // button.rw-btn.rw-btn-primary {
+            //     width: 100%;
+            // }
+            // div.rw-calendar-popup-transition,  div.rw-calendar-popup {
+            //     height: 100%;
+            //     width: 100%;
+            // }
+            // div.rw-calendar-popup-container {
+            //     height: 100%;
+            //     width: 100%;
+            // }
+            label {
+                text-transform: uppercase;
+                display: block;
+                padding-bottom: 10px;
+            }
+            input {
+                width: 350px;
+                height: 40px;
+                display: block;
+                margin-bottom: 20px;
+            }
+            button {
+                font-size: 1rem;
+                width: 120px;
+                height: 35px;
+                text-transform: uppercase;
+                margin: auto auto;
+                background-color: $secondary-darkcolor;
+                display: block;
+            }
+        }
+        h3 {
+            text-transform: uppercase;
+            font-size: 2rem;
+            margin: auto auto;
+            display: block;
+            width: 390px;
+            padding: 30px;
+            padding-top: 0;
+            letter-spacing: 3px;
+            .current-register {
+                color: $primary-color;
+            }
+            a.other-register {
+                color: black;
+                text-decoration: none;
+                padding-bottom: 10px;
+            }
+            a:hover.other-register {
+                border-bottom: $primary-color solid 3px;
+            }
+        }
+    }
+}

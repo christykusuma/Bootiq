@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const productSchema = new Schema({
+  brand: String,
   name: String,
+  color: String,
   price: Number
 });
 

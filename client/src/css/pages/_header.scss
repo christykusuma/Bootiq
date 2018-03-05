@@ -1,0 +1,207 @@
+// Header
+.header {
+    &__top--contact {
+        font-family: $secondary-font;
+        background-color: black;
+        color: white;
+        text-transform: uppercase;
+        padding: 10px 20px;
+        letter-spacing: 5px;
+        font-size: 0.6rem;
+        li {
+            list-style: none;
+            text-align: right;
+            ul {
+                display: inline-block;
+                margin: auto 1%;
+            }
+        }
+    }
+    &__top--nav {
+        font-family: $secondary-font;
+        text-transform: uppercase;
+        padding: 15px 20px;
+        padding-bottom: 0;
+        padding-top: 0;
+        letter-spacing: 2px;
+        font-size: 1rem;
+        li {
+            list-style: none;
+            text-align: right;
+            ul, a:visited, a:link {
+                text-decoration: none;
+                display: inline-block;
+                padding: 15px 20px;
+                color: black;
+            }
+            ul:hover, a:hover {
+                color: $primary-color;
+            }
+        }
+    }
+    &__logo img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 400px;
+        padding: 0px 20px;
+        margin-top: -15px;
+        margin-bottom: 20px;
+    }
+    &__bottom--nav {
+        text-align: center;
+        font-family: $secondary-font;
+        padding: 15px 20px;
+        padding-left: 0;
+        letter-spacing: 2px;
+        font-size: 1rem;
+        text-transform: uppercase;
+        li {
+            display: inline-block;
+            list-style: none;
+            ul {
+                display: inline-block;
+                padding: 10px 5px;
+                margin: 0 15px;
+                // background-color: lightblue;
+            }
+            ul:hover {
+                border-bottom: solid $primary-color 3px;
+            }
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            a:link, a:visited, a:active {
+                color: black;
+                text-decoration: none;
+            }
+        }
+        .dropdown-content--categories {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: -23px;
+            height: 380px;
+            border: solid 4px $secondary-darkcolor;
+            background-color: $secondary-lightcolor;
+            // min-width: 930px;
+            width: 268px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+            text-align: left;
+            .category {
+                color: $primary-color;
+                z-index: 2;
+                text-align: left;
+                display: flex;
+                flex-direction: column;
+                border-bottom: none;
+                li {
+                    width: 215px;
+                    padding: 15px 2px;
+                    margin-left: -10px;
+
+                }
+            }
+        }
+
+        .dropdown-content--brands {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: -23px;
+            height: 380px;
+            border: solid 4px $secondary-darkcolor;
+            background-color: $secondary-lightcolor;
+            width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+            text-align: left;
+            .category {
+                color: $primary-color;
+                z-index: 2;
+                text-align: left;
+                display: flex;
+                flex-direction: column;
+                border-bottom: none;
+                li {
+                    width: 215px;
+                    padding: 15px 2px;
+                    margin-left: -10px;
+
+                }
+            }
+        }
+
+        .dropdown-content--catname--hover, .dropdown-content--brandname--hover {
+            display: inline-block;
+            padding: 10px 0;
+            color: black;
+            border-bottom: solid $primary-color 3px;
+            font-family: $secondary-font;
+            letter-spacing: 2px;
+            font-size: 1rem;
+            display: none;
+            position: absolute;
+            top: 0;
+        }
+
+        // put box behind title
+        .dropdown-content--catbox {
+            display: none;
+            background-color: $secondary-darkcolor;
+            width: 268px;
+            height: 74px;
+            z-index: 1;
+            position: absolute; 
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            top: -10px;
+            left: -23px;
+            border: solid 4px $secondary-darkcolor;
+            border-bottom: none;
+        }
+        .dropdown-content--brandbox {
+            display: none;
+            background-color: $secondary-darkcolor;
+            width: 220px;
+            height: 74px;
+            z-index: 1;
+            position: absolute; 
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            top: -10px;
+            left: -23px;
+            border: solid 4px $secondary-darkcolor;
+            border-bottom: none;
+        }   
+
+        // drop down menu on hover
+        .dropdown:hover .dropdown-content--categories, .dropdown:hover .dropdown-content--brands,
+        .dropdown-content--categories:hover .dropdown-content--categories, .dropdown-content--brands:hover .dropdown-content--brands,  {
+            display: block;
+            z-index: 2;
+        }
+
+        // drop down boxes on hover
+        .dropdown:hover .dropdown-content--catbox,
+        .dropdown:hover .dropdown-content--brandbox,  
+        .dropdown-content--categories:hover .dropdown-content--catbox, .dropdown-content--brands:hover .dropdown-content--brandbox {
+            display: block;
+            z-index: 3;
+        }
+
+        // change title
+        .dropdown:hover .dropdown-content--catname--hover, .dropdown:hover .dropdown-content--brandname--hover,
+        .dropdown-content--categories:hover, .dropdown-content--brands:hover,
+        .dropdown-content--categories:hover .dropdown-content--catname--hover, .dropdown-content--brands:hover .dropdown-content--brandname--hover 
+        {
+            display: block;
+            z-index: 4;
+        }
+
+    }
+}
