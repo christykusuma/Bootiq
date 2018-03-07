@@ -15,6 +15,10 @@ import SignUp from './SignUp';
 import Sale from './Sale';
 import Cart from './Cart';
 import Product from './Product';
+import CreateProduct from './admin/CreateProduct';
+import CreateSubcategory from './admin/CreateSubcategory';
+import CreateBrand from './admin/CreateBrand';
+import Dashboard from './admin/Dashboard';
 
 // Holds all the other components
 class App extends Component {
@@ -30,7 +34,11 @@ class App extends Component {
 					<Route exact path="/signup" component={SignUp} />
           <Route exact path="/shoppingcart" component={Cart} />
 					<Route exact path="/sale" component={Sale} />
-          <Route exact path="/products/:id" component={Product} />
+          {/* <Route exact path="/products/:id" component={Product} /> */}
+          <Route exact path="/create-product" component={CreateProduct} />
+          <Route exact path="/create-subcategory" component={CreateSubcategory} />
+          <Route exact path="/create-brand" component={CreateBrand} />
+          <Route exact path="/dashboard" component={Dashboard} />
 					<Route exact path="/favorites" component={Favorites} />
           <Route exact path="/brand/create" component={Landing} />
           <Route exact path="/brand/x-pert" component={Landing} />
@@ -45,7 +53,6 @@ class App extends Component {
           <Route exact path="/category/haircare" component={Landing} />
           <Route exact path="/category/accessories" component={Landing} />
           <Route exact path="/category/men" component={Landing} />
-          <Route exact path="/products/create" component={Landing} />
           <Footer />
 				</div>
 			</BrowserRouter>

@@ -7,7 +7,7 @@ import {
     fetchCategories 
 } from '../actions/index';
 
-import ProductList from './Product-list';
+import ProductList from './ProductList';
 
 import { bindActionCreators } from 'redux';
 
@@ -68,7 +68,9 @@ class Sale extends Component {
                     </div>
                 </div>
                 <div className="products-gallery">
-                    <ProductList/>
+                    <ProductList
+                        mode = 'sale'
+                    />
                 </div>
             </div>
         );

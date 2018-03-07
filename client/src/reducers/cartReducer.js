@@ -5,6 +5,7 @@ export default function(state = [], action) {
         case FETCH_CART:
             return action.payload.map(cart => {
                 return {
+                    _id: cart._id,
                     quantity: cart.quantity,
                     _product: cart._product
                 }

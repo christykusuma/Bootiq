@@ -1,0 +1,156 @@
+// Dashboard page
+.dashboard {
+    font-family: $primary-font;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    .analytics {
+        padding: auto 10px;
+        padding-left: 3%;
+        padding-right: 3%;
+        padding-top: 30px;
+        padding-bottom: 50px;
+        min-width: 360px;
+        height: 930px;
+        background-color: #eff3f5; 
+        margin-right: 2%;
+        h3 {
+            margin: 20px auto;
+            margin-top: 40px;
+            text-transform: uppercase;
+            font-size: 1.3rem;
+            padding-bottom: 10px;
+            // border-bottom: $secondary-darkcolor solid 3px;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        &__bestsellers, &__newarrivals {
+            border-bottom: $secondary-darkcolor solid 3px;
+        }
+        &__bestsellers--details, &__newarrivals--details {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            padding-left: 20px;
+            margin-bottom: 40px;
+            li {
+                margin-bottom: 10px;
+            }
+            
+        }
+        &__blogposts--details {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            padding-left: 20px;
+            li {
+                margin-bottom: 10px;
+            }
+            
+        }
+    }
+    .filter {
+        margin-left: 2%;
+        padding: auto 10px;
+        padding-left: 3%;
+        padding-right: 3%;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        min-width: 360px;
+        height: 930px;
+        background-color: #eff3f5;
+        h3 {
+            margin: 20px auto;
+            text-transform: uppercase;
+            font-size: 1.3rem;
+            padding-bottom: 20px;
+            border-bottom: $primary-color solid 3px;
+            letter-spacing: 2px;
+            position: relative;
+            .create-subcategory--button, .create-brand--button {
+                position: absolute;
+                right: 0;
+                border-radius: 25px;
+                width: 30px;
+                height: 30px;
+                background-color: black;
+                color: white;
+            }
+            .create-subcategory--button:hover, .create-brand--button:hover {
+                background-color: $primary-darkcolor;
+                color: white;
+            }
+        }
+        label {
+            padding: 2px 10px;
+            letter-spacing: 1px;
+        }
+        input {
+            margin: 8px auto;
+        }
+    }
+    .products-gallery {
+        width: 480px;
+        display: flex;
+        height: 930px;
+        flex-direction: column;
+        padding: 10px;
+        background-color: #f9f9f9;
+        .create-product--button {
+            width: 450px;
+            margin: auto auto;
+            margin-top: 0px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            height: 40px;
+            background-color: $secondary-darkcolor;
+            color: black;
+        }
+        .create-product--button:hover {
+            background-color: $primary-darkcolor;
+            color: white;
+        }
+        .search-bar {
+            display: inline-block;
+            margin: auto auto;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            input {
+                font-family: $secondary-font;
+                border: none;
+                border-bottom: solid $primary-color 3px;
+                width: 420px;
+                font-size: 1rem;
+                padding: 10px 2px;
+                margin-right: 10px;
+            }
+            i {
+                font-size: 1.2rem;
+            }
+        }
+        .product {
+            width: 450px;
+            text-align: center;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            margin: auto auto;
+            margin-bottom: 5px;
+            img {
+                vertical-align: top;
+                display: inline-block;
+                width: 100px;
+                height: 100px;
+                border-right: solid 4px lightgray;
+            }
+            &-description {
+                display: inline-block;
+                background-color: #c9d6de;
+                text-align: left;
+                width: 350px;
+                height: 100px;
+                font-size: 0.9rem;
+                padding: 5px;
+            }
+        }
+    }
+}

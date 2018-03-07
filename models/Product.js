@@ -5,8 +5,15 @@ const productSchema = new Schema({
   brand: String,
   name: String,
   color: String,
-  price: Number
+  price: Number,
+//   _subcategory: {
+//     type: Schema.Types.ObjectId,
+//     ref: 'subcategory'
+// }
 });
+
+// WILL HAVE:
+// description, quantity, available, image, office_id, date, subcategory
 
 module.exports = mongoose.model('product', productSchema);
 

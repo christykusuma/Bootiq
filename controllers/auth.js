@@ -2,6 +2,8 @@
 const User = require('../models/User');
 const jwt = require('jwt-simple');
 const config = require('../config/dev');
+const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 
 // Creating token for suer
 function tokenForUser(user) {
@@ -28,7 +30,7 @@ exports.fetchuser = function (req, res, next) {
 }
 
 // Handles fetching shopping cart of existing user
-exports.fetchexistingusercartproducts = function (req, res, next) {
+exports.fetchlocalcartproducts = function (req, res, next) {
     const token = req.body.token;
     const secret = config.secret;
     const decoded = jwt.decode(token, secret);
@@ -54,6 +56,25 @@ exports.fetchexistingusercartproducts = function (req, res, next) {
           user: user
         });       
     })
+}
+
+// Handles deleting shopping cart of existing user
+exports.deletelocalcartproduct = function (req, res, next) {
+    const token = req.query.token;
+    const secret = config.secret;
+    const decoded = jwt.decode(token, secret);
+
+    const user_id = decoded.sub;
+
+    const cart_id = req.query.cart;
+
+    User.update(
+        {'_id': ObjectId(user_id)},
+        { $pull: { '_carts': { _id: (cart_id) }}},
+        false,
+        true
+    );
+    User.save();
 }
 
 // Handles user signin

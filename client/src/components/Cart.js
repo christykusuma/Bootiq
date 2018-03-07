@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { reduxForm, Field, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { fetchUser, fetchLocalCartProducts } from '../actions/index';
+import { fetchUser, fetchLocalCartProducts, deleteLocalCartProduct } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 class Cart extends Component {
@@ -16,7 +16,6 @@ class Cart extends Component {
         this.props.fetchLocalCartProducts();
     }
 
-
     handleFormSubmit({ quantity }) {
         // const user = this.props.user;
         // const product = this.props.search;
@@ -27,13 +26,13 @@ class Cart extends Component {
         console.log('CARTS LOADING...', this.props.carts);
         return this.props.carts.map((cart) => {
             return (
-                <div className="cart__basket--item">
+                <div className="cart__basket--item" key={cart._id}>
                     <img className="cart__basket--item-photo" src="product-1.jpg" alt="product-img"/>
                     <div className="cart__basket--item-details">
                         <strong>{cart._product.brand}</strong> <br/>
                         {cart._product.name}<br/>
                         Color: {cart._product.color} <br/>
-                        <a className="cart__basket--item-delete" href="/">Delete</a>
+                        <button className="cart__basket--item-delete" onClick={() => this.props.deleteLocalCartProduct(cart._id)}>Delete</button>
                         <div className="cart__basket--item-quantity">
                             <Field name="quantity" component="select">
                                 <option value={cart.quantity}>{cart.quantity}</option>
@@ -50,7 +49,7 @@ class Cart extends Component {
                             </Field>
                         </div>
                         <div className="cart__basket--item-price">
-                            <strong>Rp. {cart._product.price}</strong>
+                            <strong>Rp. {cart._product.price * cart.quantity}</strong>
                         </div>
                     </div>
                 </div>
@@ -76,7 +75,7 @@ class Cart extends Component {
                                 Merchandise subtotal
                             </td>
                             <td>
-                                $31.00
+                                Rp. 31,000
                             </td>
                         </tr>
                         <tr>
@@ -121,6 +120,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         fetchLocalCartProducts,
+        deleteLocalCartProduct,
         fetchUser
     }, dispatch);
 }

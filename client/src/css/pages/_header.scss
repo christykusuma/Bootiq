@@ -56,6 +56,21 @@
         letter-spacing: 2px;
         font-size: 1rem;
         text-transform: uppercase;
+        .search-bar {
+            display: inline-block;
+            margin-left: 60px;
+            input {
+                font-family: $secondary-font;
+                border: none;
+                border-bottom: solid $primary-color 3px;
+                width: 250px;
+                font-size: 1rem;
+                padding: 10px 2px;
+            }
+            i {
+                font-size: 1.2rem;
+            }
+        }
         li {
             display: inline-block;
             list-style: none;

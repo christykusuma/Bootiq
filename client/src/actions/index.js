@@ -105,10 +105,7 @@ export const fetchLocalCartProducts = () => async dispatch => {
 };
 
 // Submit product to shopping cart
-// export const submitCartProduct = product => async (dispatch, getState) => {
 export const submitCartProduct = (product, user, quantity) => async (dispatch) => {
-    // const user = getState().auth.id;
-    // console.log('user info:', user);
     console.log('product id', product._id);
     console.log('user id', user._id);
     console.log('quantity', quantity);
@@ -121,3 +118,14 @@ export const submitCartProduct = (product, user, quantity) => async (dispatch) =
 
     console.log('submitted product to shopping cart successfully', res.data);
 } 
+
+
+// Delete product from shopping cart
+export const deleteLocalCartProduct = cart => async dispatch => {
+    console.log('deleting cart', cart);
+    
+	const res = await axios.delete('/api/shoppingcart/delete', {params: {
+        cart: cart,
+        token: localStorage.getItem('token')
+	}});
+}
